@@ -7,7 +7,7 @@ so I can list a new space, 
 I would like to log in. 
 
 As a user,   
-so I can have my space booked, 
+so I can have my space booked,   
 I'd like to be able to list my space. 
 
 As a user,  
