@@ -70,6 +70,10 @@ I'd like the site to look nice.
 
 ### MVC Diagram
 
+# ![MVC Diagram](https://github.com/chris-clement/MakersBnB/blob/main/screenshot/MVC%20Diagram.png)
 
 ### Wireframe
+# ![Wireframe](https://github.com/chris-clement/MakersBnB/blob/main/screenshot/wireframe.png)
 
+### Database
+# ![Database](https://github.com/chris-clement/MakersBnB/blob/main/screenshot/database.png)
