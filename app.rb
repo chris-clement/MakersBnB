@@ -7,8 +7,12 @@ class MakersBnb < Sinatra::Base
     register Sinatra::Reloader
   end
 
+  @@space_name = nil
+  @@price = nil
+  @@description = nil
+
   get '/' do
-    'Hello world!'
+   redirect '/home'
   end
 
   get '/home' do
@@ -24,13 +28,20 @@ class MakersBnb < Sinatra::Base
         redirect '/makersbnb/list_a_space'
     else
       MakersBnb_Listings.create_space(space_name: params[:Name], price: params[:Price], description: params[:Description])
+      @@space_name = params[:Name]
+      @@price = params[:Price]
+      @@description = params[:Description]
       redirect '/makersbnb/listing_created_success'
+  
     end
    
   end
 
   get '/makersbnb/listing_created_success' do
-    "Listing Created"
+    @@space_name
+    @@price
+    @@description
+    erb :'listing_created_success'
   end
 
 end

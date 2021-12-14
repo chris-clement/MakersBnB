@@ -1,10 +1,22 @@
-<%= if MakersBnb_Listings.unsuccessful == true then 
-'That name has been taken, please try again' end %>
+<head>
+  <title>List a space</title>
+  <link rel="stylesheet" type="text/css" href="<%= url("/listing_style.css")%>">
+</head>
+
+<a href="/home">Home</a>
+
+<div class = "container">
+  <h1>Please create your listing</h1>
+
+  <%= if MakersBnb_Listings.unsuccessful == true then 
+  'Listing unsucessful. That name has been taken, please try again' end %>
 
 
-<form action="/makersbnb/listing_created" method="post">
-  <input required type="text" name="Name" placeholder='My Awesome Space'/>
-  <input required type="number" min='0' name="Price" />
-  <input required type="text" name="Description"/>
-  <input type="submit" value="Submit" />
-</form>
+  <form class ="listing_form" action="/makersbnb/listing_created" method="post">
+    <input required type="text" name="Name" placeholder='My Awesome Space'/>
+    <input required type="number" min='0' name="Price" placeholder="Price per night" />
+    <input required type="text" name="Description" placeholder="Description"/>
+    <input type="submit" value="Submit" />
+  </form>
+
+</div>
