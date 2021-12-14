@@ -1,6 +1,39 @@
 {
   "RSpec": {
     "coverage": {
+      "/Users/chrisclement/Desktop/Projects/Makers/Week5/MakersBnB/MakersBnB/setup_database.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          0,
+          null,
+          null
+        ]
+      },
+      "/Users/chrisclement/Desktop/Projects/Makers/Week5/MakersBnB/MakersBnB/lib/database_connection.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          32,
+          null,
+          null
+        ]
+      },
       "/Users/chrisclement/Desktop/Projects/Makers/Week5/MakersBnB/MakersBnB/app.rb": {
         "lines": [
           1,
@@ -121,6 +154,6 @@
         ]
       }
     },
-    "timestamp": 1639500990
+    "timestamp": 1639501322
   }
 }

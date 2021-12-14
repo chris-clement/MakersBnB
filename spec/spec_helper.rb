@@ -3,7 +3,6 @@ require 'simplecov-console'
 require 'capybara'
 require 'capybara/rspec'
 require 'rspec'
-require_relative '../setup_database'
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   SimpleCov::Formatter::Console,
@@ -14,6 +13,8 @@ SimpleCov.start
 
 ENV['RACK_ENV'] = 'test'
 ENV['ENVIRONMENT'] = 'test'
+
+require_relative '../setup_database'
 
 RSpec.configure do |config|
   config.before(:each) do
