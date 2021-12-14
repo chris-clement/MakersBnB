@@ -11,9 +11,9 @@ class Bookings
     dates.map do |date|
       result = DatabaseConnection.query("SELECT space_id, date FROM bookings WHERE date = $1;", [date])
       if result.count == 0
-        'Available'
+        "Available"
       else
-        'Not Available'
+        "Not Available"
       end
     end
   end
