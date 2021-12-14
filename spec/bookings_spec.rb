@@ -11,15 +11,13 @@ describe Bookings do
   describe '.check_availability' do
     context 'space is unavailable for that date' do
       it 'returns Not Available' do
-        connection = DatabaseConnection.setup('makers_bnb_test')
-        connection.query("INSERT INTO bookings(date) VALUES ($1);", ['15-12-2021' ])
-        expect(Bookings.check_availability(1, '15-12-2021')).to eq 'Not Available'
+        DatabaseConnection.query("INSERT INTO bookings(date) VALUES ($1);", ['15-12-2021' ])
+        expect(Bookings.check_availability(['15-12-2021'])).to eq ['Not Available']
       end
     end
     context 'space is available for that date' do
       it 'returns Available' do
-        connection = DatabaseConnection.setup('makers_bnb_test')
-        expect(Bookings.check_availability(1, '15-12-2021')).to eq 'Available'
+        expect(Bookings.check_availability(['15-12-2021'])).to eq ['Available']
       end
     end
   end

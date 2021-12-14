@@ -1,5 +1,5 @@
 require 'pg'
-require 'database_connection'
+require './lib/database_connection'
 class Bookings
   def self.print_dates
     t = Time.now
@@ -7,12 +7,15 @@ class Bookings
     date_array_formatted = date_array.map {|date| date.strftime("%d-%m-%Y")}
   end
 
-  def self.check_availability(space_id, date)
-    result = DatabaseConnection.query("SELECT space_id, date FROM bookings;", [])
-    if result.count == 0
-      'Available'
-    else
-      'Not Available'
+  def self.check_availability(dates = [])
+    dates.map do |date|
+      result = DatabaseConnection.query("SELECT space_id, date FROM bookings WHERE date = $1;", [date])
+      if result.count == 0
+        'Available'
+      else
+        'Not Available'
+      end
     end
   end
+    
 end

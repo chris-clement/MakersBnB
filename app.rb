@@ -1,6 +1,7 @@
 require 'sinatra/base'
 require 'sinatra/reloader'
 require './lib/bookings'
+require './setup_database'
 
 class MakersBnb < Sinatra::Base 
   configure :development do
@@ -17,6 +18,7 @@ class MakersBnb < Sinatra::Base
 
   get '/booking/date_selection' do
     @dates = Bookings.print_dates
+    @checked_availability = Bookings.check_availability(@dates)
     erb :booking_date_selection
   end
 

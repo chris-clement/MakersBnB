@@ -1,7 +1,7 @@
 require 'pg'
 
 class DatabaseConnection
-  def self.setup(database)
+  def self.setup(database = 'makers_bnb')
     @connection = PG.connect(dbname: database)
   end
 
