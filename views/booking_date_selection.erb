@@ -1,6 +1,10 @@
 <h2> Choose your date below </h2>
 <ul>
 <% @dates.zip(@checked_availability).each do |date, available| %>
- <li> <%= date %> <%= available %> </li>
+ <li> <%= date %> <%= available %> <% if available != "Not Available" %>
+ <form action = '/booking/confirm_booking' method='get'> 
+ <input type='submit' value='Book'>
+ <%end%>
+ </li>
 <%end%> 
 </ul>

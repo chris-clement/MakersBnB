@@ -17,3 +17,13 @@ feature 'After clicking book now, a user sees if a date is available' do
         expect(page).to have_content('Not Available')
     end
 end
+
+feature 'Booking confirmed once you click to book an available date' do
+    scenario 'A user should be able to book an available date' do
+        DatabaseConnection.query("INSERT INTO bookings(date) VALUES ($1);", ['15-12-2021'])
+        visit('/add_booking')
+        click_on('Book Now')
+        first(:button, 'Book').click
+        expect(page).to have_content 'Booking confirmed'
+    end
+end
