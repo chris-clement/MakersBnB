@@ -6,6 +6,7 @@ require 'sinatra/reloader'
 require './lib/user'
 require './database_connection_setup'
 
+# App class
 class MakersBnb < Sinatra::Base
   configure :development do
     register Sinatra::Reloader

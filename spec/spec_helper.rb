@@ -2,9 +2,9 @@
 
 require 'simplecov'
 require 'simplecov-console'
-# require 'capybara'
-# require 'capybara/rspec'
-# require 'rspec'
+require 'capybara'
+require 'capybara/rspec'
+require 'rspec'
 require_relative './setup_test_database'
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
@@ -13,7 +13,8 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
 
 SimpleCov.start
 
-ENV['RACK_ENV'] = 'test'
+# ENV['RACK_ENV'] = 'test'
+require 'feature/web_helpers'
 
 ENV['ENVIRONMENT'] = 'test'
 
@@ -24,10 +25,6 @@ RSpec.configure do |config|
 end
 
 require File.join(File.dirname(__FILE__), '../app.rb')
-
-require 'capybara'
-require 'capybara/rspec'
-require 'rspec'
 
 Capybara.app = MakersBnb
 

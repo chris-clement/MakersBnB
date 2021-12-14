@@ -19,7 +19,7 @@ class User
   end
 
   def self.valid(username, password)
-    result = DatabaseConnection.query("SELECT username, password FROM users WHERE username = $1;", [username])
+    result = DatabaseConnection.query("SELECT password FROM users WHERE username = $1;", [username])
     result[0]['password'] == password
   end
 end
