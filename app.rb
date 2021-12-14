@@ -9,4 +9,13 @@ class MakersBnb < Sinatra::Base
   get '/' do
     'Hello world!'
   end
+
+  get '/add_booking' do
+    erb :add_booking
+  end
+
+  get '/booking/date_selection' do
+    erb :booking_date_selection
+  end
+
 end
