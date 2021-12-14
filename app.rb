@@ -20,6 +20,9 @@ class MakersBnb < Sinatra::Base
   end
 
   post '/makersbnb/listing_created' do
+    if MakersBnb_Listings.exist?(space_name: params[:Name])
+
+    end
     MakersBnb_Listings.create_space(space_name: params[:Name], price: params[:Price], description: params[:Description])
     redirect '/makersbnb/listing_created_success'
   end
