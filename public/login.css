@@ -1,0 +1,38 @@
+#logo {
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQO7Wg2cD5bQcc6ehPAU3QAdhCCwbDop2pM5Q&usqp=CAU');
+  background-size: contain;
+  width: 40px;
+  height: 40px;
+}
+#top-bar {
+  background-color: #ffe6e6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  color: red;
+  font-size: 2rem;
+}
+#form-container {
+  background-color: #ffe6e6;
+  display: flex;
+  flex-direction: column;
+  margin: 2rem auto auto;
+  align-items: center;
+  max-width: 400px;
+  width: 100%;
+  padding: 2rem;
+  border: 1px black solid;
+}
+#username, #password {
+  height: 3rem;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+}
+#login-btn {
+  background-color: white;
+  width: 12rem;
+  height: 2rem;
+  border-radius: 5px;
+  border: 1px solid black;
+}

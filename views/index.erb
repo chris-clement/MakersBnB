@@ -1,13 +1,25 @@
 <head> 
+  <link href="<%= url('/index.css') %>" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-  <h1> MakersBnB </h1>
+  <div id='top-bar'>
+    <div id='logo'>
+    </div>
+    <h1> MakersBnB </h1>
+  </div>
+
+    <form action="/login" method="get">
+      <input type="submit" value="login" id='login-btn'>
+    </form>
+
   <h3> Discover places to stay </h3>
 
-  <div> London Pad </div>
-
-  <form action="/login" method="get">
-    <input type="submit" value="login">
-  </form>
+  <div id='space-container'>
+    Name: London Pad 
+    <br>
+    Description: Kensington Flat
+    <br>
+    Price: £300
+  </div>
 </body>

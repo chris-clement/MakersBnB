@@ -8,13 +8,13 @@ feature 'we can log in' do
   end
 end
 
-feature 'fill out log in form' do
-  scenario 'fill out log in form with username and password' do
-    visit('/')
-    click_on 'login'
-    fill_in 'username', with: 'firstuser'
-    fill_in 'password', with: 'password'
-    click_on 'login'
-    expect(page).to have_content 'firstuser'
-  end
-end
+# feature 'fill out log in form' do
+#   scenario 'fill out log in form with username and password' do
+#     visit('/')
+#     click_on 'login'
+#     fill_in 'username', with: 'firstuser'
+#     fill_in 'password', with: 'password'
+#     click_on 'login'
+#     expect(page).to have_content 'firstuser'
+#   end
+# end

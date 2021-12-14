@@ -1,0 +1,43 @@
+body {
+  margin: 0;
+}
+#logo {
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQO7Wg2cD5bQcc6ehPAU3QAdhCCwbDop2pM5Q&usqp=CAU');
+  background-size: contain;
+  width: 40px;
+  height: 40px;
+}
+#top-bar {
+  background-color: #ffe6e6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  color: red;
+  font-size: 2rem;
+}
+#login-btn {
+  background-color: white;
+  position: fixed;
+  top: 70;
+  right: 30;
+  width: 5rem;
+  height: 2rem;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+h3 {
+  display: flex;
+  justify-content: center;
+  font-size: 2rem;
+}
+#space-container {
+  max-width: 500px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  border: 1px solid black;
+  padding: 1rem;
+}

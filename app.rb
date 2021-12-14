@@ -28,6 +28,7 @@ class MakersBnb < Sinatra::Base
 
   get '/home' do
     if User.valid(session[:username], session[:password])
+      @username = session[:username]
       erb :home
     else
       redirect '/login'
