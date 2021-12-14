@@ -22,7 +22,9 @@ class MakersBnb < Sinatra::Base
     erb :booking_date_selection
   end
 
-  get '/booking/confirm_booking' do
+  get '/booking/confirm_booking/:date' do
+    p params
+    Bookings.add_booking(params[:date])
     erb :booking_confirm_booking
   end
 

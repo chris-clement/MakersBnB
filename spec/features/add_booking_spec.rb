@@ -27,3 +27,13 @@ feature 'Booking confirmed once you click to book an available date' do
         expect(page).to have_content 'Booking confirmed'
     end
 end
+
+feature 'Booking disables availability of that date' do
+    scenario 'A user should be able to book an available date and then it becomes unavailable' do
+        visit('/add_booking')
+        click_on('Book Now')
+        first(:button, 'Book').click
+        click_on 'Back to dates'
+        expect(page).to have_content '14-12-2021 Not Available'
+    end
+end

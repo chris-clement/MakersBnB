@@ -17,5 +17,9 @@ class Bookings
       end
     end
   end
+
+  def self.add_booking(date)
+    DatabaseConnection.query("INSERT INTO bookings(date) VALUES($1);", [date])
+  end
     
 end
