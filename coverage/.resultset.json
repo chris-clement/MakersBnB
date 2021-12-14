@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/chrisclement/Desktop/Projects/Makers/Week5/MakersBnB/MakersBnB/app.rb": {
+      "/Users/michaelkassim/Desktop/projects/MakersBnB/app.rb": {
         "lines": [
           1,
           1,
@@ -16,8 +16,19 @@
           null,
           null
         ]
+      },
+      "/Users/michaelkassim/Desktop/projects/MakersBnB/spec/features/add_booking_spec.rb": {
+        "lines": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          null,
+          null
+        ]
       }
     },
-    "timestamp": 1639411604
+    "timestamp": 1639478491
   }
 }
