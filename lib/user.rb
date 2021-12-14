@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 require './lib/database_connection'
 
+# User class
 class User
   attr_reader :username, :password
 
@@ -8,16 +11,15 @@ class User
     @password = password
   end
 
-  def self.valid(username, password)
-    result = User.all.map{ |user| user.username == username && user.password == password}
-    result.include?(true)
-  end
-
   def self.all
-    usertest = DatabaseConnection.query("INSERT INTO users(username, password) VALUES('firstuser', 'password');")
     users = DatabaseConnection.query("SELECT username, password FROM users;")
     users.map do |user|
-      User.new(user["username"], user["password"])
+      User.new(user['username'], user['password'])
     end
+  end
+
+  def self.valid(username, password)
+    result = DatabaseConnection.query("SELECT username, password FROM users WHERE username = $1;", [username])
+    result[0]['password'] == password
   end
 end

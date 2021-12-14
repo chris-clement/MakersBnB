@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 feature 'we can view listings' do
   scenario 'should display a list of spaces' do
-    visit ('/')
+    visit('/')
     expect(page).to have_content 'London Pad'
   end
 end

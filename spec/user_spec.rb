@@ -1,16 +1,26 @@
+# frozen_string_literal: true
+
 require 'user'
 
 describe User do
   describe '.valid' do
     it 'checks password and username is correct' do
-      
-      expect(User.valid("firstuser", "password")).to eq true
+      DatabaseConnection.query("INSERT INTO users(username, password) VALUES('firstuser', 'password');")
+      user_password = User.valid('firstuser', 'password')
+      expect(user_password).to eq true
+    end
+
+    it "returns false when username and password don't match" do
+      DatabaseConnection.query("INSERT INTO users(username, password) VALUES('firstuser', 'password');")
+      user_password = User.valid('firstuser', '123456')
+      expect(user_password).to eq false
     end
   end
 
   describe '.all' do
     it 'returns all the users' do
-      expect(User.all[0].username).to include "firstuser"
+      DatabaseConnection.query("INSERT INTO users(username, password) VALUES('firstuser', 'password');")
+      expect(User.all[0].username).to include 'firstuser'
     end
   end
 end
