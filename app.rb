@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require 'sinatra/reloader'
+require './database_connection_setup.rb'
 
 class MakersBnb < Sinatra::Base 
   configure :development do
@@ -7,6 +8,14 @@ class MakersBnb < Sinatra::Base
   end
 
   get '/' do
-    'Hello world!'
+    erb :index
+  end
+
+  get '/login' do
+    erb :login
+  end
+
+  post '/home' do
+    erb :home
   end
 end

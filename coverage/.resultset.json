@@ -1,10 +1,11 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/rikytraveller/Projects/MakersBnB/app.rb": {
+      "/Users/BrynWilliams/Projects/week5/MakersBnB/app.rb": {
         "lines": [
           1,
           1,
+          1,
           null,
           1,
           1,
@@ -12,12 +13,123 @@
           null,
           null,
           1,
+          3,
+          null,
+          null,
+          1,
+          2,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/BrynWilliams/Projects/week5/MakersBnB/database_connection_setup.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
           0,
+          null
+        ]
+      },
+      "/Users/BrynWilliams/Projects/week5/MakersBnB/lib/database_connection.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          6,
+          null,
+          1,
+          9,
+          null,
+          null
+        ]
+      },
+      "/Users/BrynWilliams/Projects/week5/MakersBnB/spec/feature/home_page_feature_spec.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/BrynWilliams/Projects/week5/MakersBnB/spec/feature/login_feature_spec.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/BrynWilliams/Projects/week5/MakersBnB/spec/user_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/BrynWilliams/Projects/week5/MakersBnB/lib/user.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          null,
+          1,
+          2,
+          2,
+          null,
+          null,
+          1,
+          2,
+          1,
+          null,
+          null,
+          1,
+          2,
+          2,
+          2,
+          2,
+          null,
           null,
           null
         ]
       }
     },
-    "timestamp": 1639422813
+    "timestamp": 1639484009
   }
 }
