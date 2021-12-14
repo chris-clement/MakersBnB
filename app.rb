@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require 'sinatra/reloader'
+require './lib/bookings'
 
 class MakersBnb < Sinatra::Base 
   configure :development do
@@ -15,6 +16,7 @@ class MakersBnb < Sinatra::Base
   end
 
   get '/booking/date_selection' do
+    @dates = Bookings.print_dates
     erb :booking_date_selection
   end
 
