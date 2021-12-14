@@ -11,7 +11,7 @@ class MakersBnb < Sinatra::Base
     'Hello world!'
   end
 
-  get '/makersbnb/homepage' do
+  get '/home' do
     erb :'homepage'
   end
 
@@ -21,16 +21,16 @@ class MakersBnb < Sinatra::Base
 
   post '/makersbnb/listing_created' do
     if MakersBnb_Listings.exist?(space_name: params[:Name])
-
+        redirect '/makersbnb/list_a_space'
+    else
+      MakersBnb_Listings.create_space(space_name: params[:Name], price: params[:Price], description: params[:Description])
+      redirect '/makersbnb/listing_created_success'
     end
-    MakersBnb_Listings.create_space(space_name: params[:Name], price: params[:Price], description: params[:Description])
-    redirect '/makersbnb/listing_created_success'
+   
   end
 
   get '/makersbnb/listing_created_success' do
     "Listing Created"
   end
 
-  get '/makersbnb/listing_created_failure' do
-  end
 end
