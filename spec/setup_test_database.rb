@@ -3,7 +3,7 @@ require 'pg'
 def setup_test_database
   p "Setting up test database..."
 
-  DatabaseConnection.setup('makers_bnb_test')
-  DatabaseConnection.query('TRUNCATE users, spaces, bookings CASCADE;')
-  # DatabaseConnection.query("ALTER SEQUENCE users_id_seq RESTART WITH 1;")
+  connection = PG.connect(dbname: 'makers_bnb_test')
+  connection.exec('TRUNCATE users CASCADE;')
+  # Not how it's meant to be done - when merging, please keep original DatabaseConnection!
 end

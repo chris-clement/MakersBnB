@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/chrisclement/Desktop/Projects/Makers/Week5/MakersBnB/MakersBnB/app.rb": {
+      "/Users/christhomas/group_projects/app.rb": {
         "lines": [
           1,
           1,
@@ -14,10 +14,44 @@
           1,
           0,
           null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          2,
+          null,
+          null
+        ]
+      },
+      "/Users/christhomas/group_projects/spec/features/fill_in_listing_form_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/christhomas/group_projects/spec/features/navigate_to_list_space_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
           null
         ]
       }
     },
-    "timestamp": 1639411604
+    "timestamp": 1639481165
   }
 }
