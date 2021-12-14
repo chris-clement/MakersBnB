@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'sinatra/base'
+require 'sinatra/flash'
 require 'sinatra/reloader'
 require './lib/user'
 require './database_connection_setup'
@@ -11,6 +12,7 @@ class MakersBnb < Sinatra::Base
   end
 
   enable :sessions
+  register Sinatra::Flash
 
   get '/' do
     erb :index
@@ -31,6 +33,7 @@ class MakersBnb < Sinatra::Base
       @username = session[:username]
       erb :home
     else
+      flash[:notice] = 'Invalid username or password'
       redirect '/login'
     end
   end

@@ -17,22 +17,27 @@
   background-color: #ffe6e6;
   display: flex;
   flex-direction: column;
-  margin: 2rem auto auto;
+  margin: 3rem auto auto;
   align-items: center;
   max-width: 400px;
   width: 100%;
-  padding: 2rem;
+  padding: 3rem;
   border: 1px black solid;
-}
-#username, #password {
-  height: 3rem;
-  margin-bottom: 1rem;
   border-radius: 5px;
 }
-#login-btn {
-  background-color: white;
+#username, #password {
+  height: 3.5rem;
+  margin-bottom: 1rem;
+  border-radius: 5px;
   width: 12rem;
-  height: 2rem;
+  border: 1px solid black;
+  padding-left: 0.6rem;
+}
+#login-btn {
+  background-color: red;
+  color:white;
+  width: 12rem;
+  height: 2.8rem;
   border-radius: 5px;
   border: 1px solid black;
 }

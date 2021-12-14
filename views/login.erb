@@ -16,5 +16,13 @@
       <br>
       <input type="submit" value="login" id='login-btn'>
     </form>
+
+    <% flash.keys.each do |type| %>
+      <div data-alert class="flash <%= type %> alert-box radius">
+        <%= flash[type] %>
+        <a href="/login" class="close">&times;</a>
+      </div>
+    <% end %>
+    
   </div>
 </body>
