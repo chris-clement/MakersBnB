@@ -10,7 +10,8 @@ end
 
 feature 'After clicking book now, a user sees if a date is available' do
     scenario 'A user should be able to see if a date is available' do
-        DatabaseConnection.query("INSERT INTO bookings(date) VALUES ($1);", ['15-12-2021'])
+        DatabaseConnection.query("INSERT INTO bookings(date, approved) VALUES ($1, $2);", ['15-12-2021', false])
+        DatabaseConnection.query("INSERT INTO bookings(date, approved) VALUES ($1, $2);", ['18-12-2021', true])
         visit('/add_booking')
         click_on('Book Now')
         expect(page).to have_content('Available')
@@ -33,6 +34,7 @@ feature 'Booking disables availability of that date' do
         visit('/add_booking')
         click_on('Book Now')
         first(:button, 'Book').click
+        Bookings.approve_booking(Time.now.strftime("%d-%m-%Y"))
         click_on 'Back to dates'
         expect(page).to have_content "#{Time.now.strftime("%d-%m-%Y")} Not Available"
     end

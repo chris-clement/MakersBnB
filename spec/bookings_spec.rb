@@ -11,14 +11,21 @@ describe Bookings do
   end
 
   describe '.check_availability' do
-    context 'space is unavailable for that date' do
-      it 'returns Not Available' do
+    context 'user has not approved or disapproved yet' do
+      it 'returns Available' do
         DatabaseConnection.query("INSERT INTO bookings(date) VALUES ($1);", ['15-12-2021' ])
+        expect(Bookings.check_availability(['15-12-2021'])).to eq ['Available']
+      end
+    end
+    context 'user has approved the booking' do
+      it 'returns not Available' do
+        DatabaseConnection.query("INSERT INTO bookings(date, approved) VALUES ($1, $2);", ['15-12-2021', true])
         expect(Bookings.check_availability(['15-12-2021'])).to eq ['Not Available']
       end
     end
-    context 'space is available for that date' do
+    context 'user has disapproved the booking' do
       it 'returns Available' do
+        DatabaseConnection.query("INSERT INTO bookings(date, approved) VALUES ($1, $2);", ['15-12-2021', false])
         expect(Bookings.check_availability(['15-12-2021'])).to eq ['Available']
       end
     end
@@ -27,7 +34,7 @@ describe Bookings do
   describe '.add_booking' do
     it 'adds booking to database' do
       Bookings.add_booking('20-12-2021')
-      expect(Bookings.check_availability(['20-12-2021'])).to eq ['Not Available']
+      expect(Bookings.check_availability(['20-12-2021'])).to eq ['Available']
     end
   end
   
