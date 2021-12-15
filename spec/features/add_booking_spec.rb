@@ -37,3 +37,12 @@ feature 'Booking disables availability of that date' do
         expect(page).to have_content "#{Time.now.strftime("%d-%m-%Y")} Not Available"
     end
 end
+
+feature 'Confirmation page specifies date which has been booked' do
+    scenario 'A user books an available date and gets confirmation for the date they have booked' do
+        visit('/add_booking')
+        click_on('Book Now')
+        first(:button, 'Book').click
+        expect(page).to have_content "Booking confirmed for #{Time.now.strftime("%d-%m-%Y")}"
+    end
+end
