@@ -1,18 +1,24 @@
+# frozen_string_literal: true
+
 require 'sinatra/base'
+require 'sinatra/flash'
 require 'sinatra/reloader'
 require_relative './lib/makersbnb'
+require './lib/user'
+require './database_connection_setup'
 
-class MakersBnb < Sinatra::Base 
+
+# App class
+class MakersBnb < Sinatra::Base
   configure :development do
     register Sinatra::Reloader
   end
 
-  get '/' do
-   redirect '/home'
-  end
+  enable :sessions
+  register Sinatra::Flash
 
-  get '/home' do
-    erb :'homepage'
+  get '/' do
+     erb :index
   end
 
   get '/makersbnb/list_a_space' do
@@ -31,4 +37,25 @@ class MakersBnb < Sinatra::Base
     end
   end
 
+
+  get '/login' do
+    erb :login
+  end
+
+  post '/user_details' do
+    session[:username] = params[:username]
+    session[:password] = params[:password]
+    redirect '/home'
+  end
+
+  get '/home' do
+    if User.valid(session[:username], session[:password])
+      @username = session[:username]
+      erb :home
+    else
+      flash[:notice] = 'Invalid username or password'
+      redirect '/login'
+    end
+  end
 end
+
