@@ -16,11 +16,4 @@ describe User do
       expect(user_password).to eq false
     end
   end
-
-  describe '.all' do
-    it 'returns all the users' do
-      DatabaseConnection.query("INSERT INTO users(username, password) VALUES('firstuser', 'password');")
-      expect(User.all[0].username).to include 'firstuser'
-    end
-  end
 end
