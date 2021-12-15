@@ -1,4 +1,7 @@
 <h2>Current Booking Request:</h2> 
+<form action="/home">
+  <input type='submit' value='Home'>
+</form>
 London Road, <% @booked_dates.zip(@approved_array).each do |date, approval_status| %>
   <% if  approval_status == 'pending' %>
   <%= date %>

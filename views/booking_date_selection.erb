@@ -1,4 +1,7 @@
 <h2> Choose your date below </h2>
+<form action="/home">
+  <input type='submit' value='Home'>
+</form>
 <ul>
 <% @dates.zip(@checked_availability).each do |date, available| %>
  <li> <%= date %> <%= available %> <% if available != "Not Available" %>
