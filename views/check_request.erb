@@ -1,14 +1,11 @@
 <h2>Current Booking Request:</h2> 
-London Road, <% @booked_dates.each do |date| %>
-<%= date %>
-<form action='/check_request'>
+London Road, <% @booked_dates.zip(@approved_array).each do |date, approval_status| %>
+  <% if  approval_status == false %>
+  <%= date %>
+  <form action='/check_request/<%= date %>' method='post'>
   <input type='submit' value='Approve'>
-</form>
-<% end %>
-
-<% flash.keys.each do |type| %>
-  <div data-alert class="flash <%= type %> alert-box radius">
-    <%= flash[type] %>
-    <a href="#" class="close">&times;</a>
-  </div>
+  </form>
+  <% else %>
+  <div> Approved <%= date %> </div>
+  <% end %>
 <% end %>

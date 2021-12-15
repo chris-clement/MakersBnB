@@ -78,12 +78,13 @@ class MakersBnb < Sinatra::Base
 
   get '/check_request' do
     @booked_dates = Bookings.booked_dates
-    p @booked_dates[0]
-    if Bookings.approved?(@booked_dates[0]) == true
-      flash[:notice] = 'You have approved this booking'
-    end
-    
+    @approved_array = Bookings.approved?(@booked_dates)
     erb :check_request
+  end
+
+  post '/check_request/:date' do
+    Bookings.approve_booking(params[:date])
+    redirect '/check_request'
   end
 
 end

@@ -52,13 +52,13 @@ describe Bookings do
     it 'returns true' do
       Bookings.add_booking('20-12-2021')
       Bookings.approve_booking('20-12-2021')
-      expect(Bookings.approved?('20-12-2021')).to eq true
+      expect(Bookings.approved?(['20-12-2021'])).to eq [true]
     end
 
     context 'a date has not been approved'
     it 'returns false' do
       Bookings.add_booking('20-12-2021')
-      expect(Bookings.approved?('20-12-2021')).to eq false
+      expect(Bookings.approved?(['20-12-2021'])).to eq [false]
     end
   end
 end
