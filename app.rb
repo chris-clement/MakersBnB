@@ -7,6 +7,7 @@ require './lib/bookings'
 require_relative './lib/makersbnb'
 require './lib/user'
 require './database_connection_setup'
+require_relative './lib/update'
 
 
 # App class
@@ -39,6 +40,7 @@ class MakersBnb < Sinatra::Base
   post '/user_details' do
     session[:username] = params[:username]
     session[:password] = params[:password]
+    session[:user_id] = User.user_id(username: session[:username])
     redirect '/home'
   end
 
@@ -74,6 +76,10 @@ class MakersBnb < Sinatra::Base
     Bookings.add_booking(params[:date])
     @date_booked = params[:date]
     erb :booking_confirm_booking
+  end
+
+  get '/update_booking' do
+    erb :update_booking
   end
 
 end

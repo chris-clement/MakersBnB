@@ -9,4 +9,8 @@ class User
     result = DatabaseConnection.query("SELECT password FROM users WHERE username = $1;", [username])
     result[0]['password'] == password
   end
+
+  def self.user_id(username:)
+    id = (DatabaseConnection.query("SELECT id FROM users WHERE username = $1;", [username])).to_s.to_i
+  end
 end
