@@ -1,0 +1,20 @@
+<head>
+  <title>List a space</title>
+  <link rel="stylesheet" type="text/css" href="<%= url("/listing_style.css")%>">
+</head>
+
+<a href="/home">Home</a>
+
+  <div class = "container">
+  <a href="/makersbnb/list_a_space">List another space</a>
+
+  <h3>Listing Successful</h3>
+
+  <div class = "listing_preview">
+    <h3>Here's your listing</h3>
+   <span> Space name:<%= @space_name %></span>
+   <span> Price: £<%= @price %></span>
+   <span> Description: <%= @description %></span>
+  </div>
+
+</div>
