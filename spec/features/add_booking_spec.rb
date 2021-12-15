@@ -34,6 +34,6 @@ feature 'Booking disables availability of that date' do
         click_on('Book Now')
         first(:button, 'Book').click
         click_on 'Back to dates'
-        expect(page).to have_content '14-12-2021 Not Available'
+        expect(page).to have_content "#{Time.now.strftime("%d-%m-%Y")} Not Available"
     end
 end
