@@ -19,17 +19,22 @@ class MakersBnb < Sinatra::Base
   register Sinatra::Flash
 
   get '/' do
-     erb :index
+     
+    #@listings = MakersBnb_Listings.view_listings
+    #p @listings
+    erb :index
   end
 
   get '/home' do
     if User.valid(session[:username], session[:password])
+      @listings = MakersBnb_Listings.view_listings
       @username = session[:username]
       erb :home
     else
       flash[:notice] = 'Invalid username or password'
       redirect '/login'
     end
+    
   end
 
   get '/login' do
