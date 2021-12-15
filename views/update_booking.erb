@@ -1,2 +1,5 @@
 <h1> My Spaces </h1>
-<h1> <%= Updater.list(id: session[:user_id]) %> </h1>
+<h1> <%= Updater.list(id: session[:user_id]).each do |space| 
+space[1]
+end 
+%> </h1>

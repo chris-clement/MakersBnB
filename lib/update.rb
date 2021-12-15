@@ -5,7 +5,7 @@ class Updater
 
   def self.list(id:)
     result = DatabaseConnection.query("SELECT * FROM spaces WHERE user_id = $1;", [id])
-    p result.to_s
+    result.to_a
   end
 
 end

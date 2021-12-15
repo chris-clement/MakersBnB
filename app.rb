@@ -24,6 +24,7 @@ class MakersBnb < Sinatra::Base
   end
 
   get '/home' do
+    p session[:user_id]
     if User.valid(session[:username], session[:password])
       @username = session[:username]
       erb :home
@@ -40,7 +41,7 @@ class MakersBnb < Sinatra::Base
   post '/user_details' do
     session[:username] = params[:username]
     session[:password] = params[:password]
-    session[:user_id] = User.user_id(username: session[:username])
+    session[:user_id] = User.user_id(username: params[:username])
     redirect '/home'
   end
 
@@ -52,7 +53,7 @@ class MakersBnb < Sinatra::Base
     if MakersBnb_Listings.exist?(space_name: params[:Name])
         redirect '/list_a_space'
     else
-      MakersBnb_Listings.create_space(space_name: params[:Name], price: params[:Price], description: params[:Description])
+      MakersBnb_Listings.create_space(space_name: params[:Name], price: params[:Price], description: params[:Description], user_id: session[:user_id])
       @space_name = params[:Name]
       @price = params[:Price]
       @description = params[:Description]
