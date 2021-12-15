@@ -9,3 +9,4 @@ def setup_test_database
   DatabaseConnection.query('TRUNCATE users;')
   DatabaseConnection.query("ALTER SEQUENCE users_id_seq RESTART WITH 1;")
 end
+
