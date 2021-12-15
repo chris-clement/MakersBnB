@@ -22,4 +22,17 @@ class Bookings
     DatabaseConnection.query("INSERT INTO bookings(date) VALUES($1);", [date])
   end
     
+  def self.booked_dates
+    dates = DatabaseConnection.query("SELECT date FROM bookings;")
+    dates.map { |date| date['date'] }
+  end
+  
+  def self.approve_booking(date)
+   p DatabaseConnection.query("UPDATE bookings SET approved = true WHERE date=$1;", [date])
+  end
+
+  def self.approved?(date)
+    result = DatabaseConnection.query("SELECT approved FROM bookings WHERE date=$1;", [date])
+    result.first['approved'] == 't' ? true : false
+  end
 end

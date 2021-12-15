@@ -76,4 +76,14 @@ class MakersBnb < Sinatra::Base
     erb :booking_confirm_booking
   end
 
+  get '/check_request' do
+    @booked_dates = Bookings.booked_dates
+    p @booked_dates[0]
+    if Bookings.approved?(@booked_dates[0]) == true
+      flash[:notice] = 'You have approved this booking'
+    end
+    
+    erb :check_request
+  end
+
 end

@@ -30,5 +30,35 @@ describe Bookings do
       expect(Bookings.check_availability(['20-12-2021'])).to eq ['Not Available']
     end
   end
+  
+  describe '.booked_date' do
+    it 'returns all dates that have been booked' do
+      Bookings.add_booking('20-12-2021')
+      Bookings.add_booking('22-12-2021')
+      Bookings.add_booking('25-12-2021')
+      expect(Bookings.booked_dates).to eq ['20-12-2021', '22-12-2021', '25-12-2021']
+    end
+  end
 
+  # describe '#approve_booking' do
+  #   it 'sets a given date as approved' do
+  #     Bookings.add_booking('20-12-2021')
+  #     expect(Bookings.approve_booking('20-12-2021')).to 
+  #   end
+  # end
+
+  describe '.approved?' do
+    context 'a date has been approved'
+    it 'returns true' do
+      Bookings.add_booking('20-12-2021')
+      Bookings.approve_booking('20-12-2021')
+      expect(Bookings.approved?('20-12-2021')).to eq true
+    end
+
+    context 'a date has not been approved'
+    it 'returns false' do
+      Bookings.add_booking('20-12-2021')
+      expect(Bookings.approved?('20-12-2021')).to eq false
+    end
+  end
 end
