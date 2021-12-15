@@ -10,11 +10,7 @@ class Bookings
   def self.check_availability(dates = [])
     dates.map do |date|
       result = DatabaseConnection.query("SELECT space_id, date FROM bookings WHERE date = $1 AND approved = $2;", [date, true])
-      if result.count == 0
-        "Available"
-      else
-        "Not Available"
-      end
+      result.count.zero? ? "Available" : "Not Available"
     end
   end
 
