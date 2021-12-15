@@ -3,6 +3,7 @@
 require 'sinatra/base'
 require 'sinatra/flash'
 require 'sinatra/reloader'
+require './lib/bookings'
 require_relative './lib/makersbnb'
 require './lib/user'
 require './database_connection_setup'
@@ -21,6 +22,26 @@ class MakersBnb < Sinatra::Base
      erb :index
   end
 
+  get '/home' do
+    if User.valid(session[:username], session[:password])
+      @username = session[:username]
+      erb :home
+    else
+      flash[:notice] = 'Invalid username or password'
+      redirect '/login'
+    end
+  end
+
+  get '/login' do
+    erb :login
+  end
+
+  post '/user_details' do
+    session[:username] = params[:username]
+    session[:password] = params[:password]
+    redirect '/home'
+  end
+
   get '/makersbnb/list_a_space' do
     erb :'list_a_space'
   end
@@ -37,25 +58,20 @@ class MakersBnb < Sinatra::Base
     end
   end
 
-
-  get '/login' do
-    erb :login
+  get '/add_booking' do
+    erb :add_booking
   end
 
-  post '/user_details' do
-    session[:username] = params[:username]
-    session[:password] = params[:password]
-    redirect '/home'
+  get '/booking/date_selection' do
+    @dates = Bookings.print_dates
+    @checked_availability = Bookings.check_availability(@dates)
+    erb :booking_date_selection
   end
 
-  get '/home' do
-    if User.valid(session[:username], session[:password])
-      @username = session[:username]
-      erb :home
-    else
-      flash[:notice] = 'Invalid username or password'
-      redirect '/login'
-    end
+  get '/booking/confirm_booking/:date' do
+    Bookings.add_booking(params[:date])
+    @date_booked = params[:date]
+    erb :booking_confirm_booking
   end
+
 end
-
