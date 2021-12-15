@@ -55,10 +55,17 @@ describe Bookings do
       expect(Bookings.approved?(['20-12-2021'])).to eq [true]
     end
 
-    context 'a date has not been approved'
+    context 'a date has been disapproved'
     it 'returns false' do
       Bookings.add_booking('20-12-2021')
+      Bookings.disapprove_booking('20-12-2021')
       expect(Bookings.approved?(['20-12-2021'])).to eq [false]
+    end
+
+    context 'a date has not been approved or dissaproved'
+    it 'returns false' do
+      Bookings.add_booking('20-12-2021')
+      expect(Bookings.approved?(['20-12-2021'])).to eq ['pending']
     end
   end
 end

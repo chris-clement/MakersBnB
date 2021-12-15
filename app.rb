@@ -82,8 +82,13 @@ class MakersBnb < Sinatra::Base
     erb :check_request
   end
 
-  post '/check_request/:date' do
+  get '/check_request/approve/:date' do
     Bookings.approve_booking(params[:date])
+    redirect '/check_request'
+  end
+
+  get '/check_request/disapprove/:date' do
+    Bookings.disapprove_booking(params[:date])
     redirect '/check_request'
   end
 

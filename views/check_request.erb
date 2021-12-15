@@ -1,11 +1,16 @@
 <h2>Current Booking Request:</h2> 
 London Road, <% @booked_dates.zip(@approved_array).each do |date, approval_status| %>
-  <% if  approval_status == false %>
+  <% if  approval_status == 'pending' %>
   <%= date %>
-  <form action='/check_request/<%= date %>' method='post'>
+  <form action='/check_request/approve/<%= date %>' method='get'>
   <input type='submit' value='Approve'>
   </form>
-  <% else %>
+  <form action='/check_request/disapprove/<%= date %>' method='get'>
+  <input type='submit' value='Disapprove'>
+  </form>
+  <% elsif approval_status == true %>
   <div> Approved <%= date %> </div>
+  <% else %>
+  <div> Disapproved <%= date %> </div>
   <% end %>
 <% end %>

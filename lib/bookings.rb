@@ -28,13 +28,23 @@ class Bookings
   end
   
   def self.approve_booking(date)
-   p DatabaseConnection.query("UPDATE bookings SET approved = true WHERE date=$1;", [date])
+   DatabaseConnection.query("UPDATE bookings SET approved = true WHERE date=$1;", [date])
+  end
+
+  def self.disapprove_booking(date)
+    DatabaseConnection.query("UPDATE bookings SET approved = false WHERE date=$1;", [date])
   end
 
   def self.approved?(dates = []) 
     dates.map do |date|
       result = DatabaseConnection.query("SELECT approved FROM bookings WHERE date=$1;", [date])
-      result.first['approved'] == 't' ? true : false
+      if result.first['approved'] == 't'
+        true
+      elsif result.first['approved'] == 'f'
+        false
+      else
+        'pending'
+      end
     end
   end
 end
