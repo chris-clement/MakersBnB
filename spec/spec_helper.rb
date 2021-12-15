@@ -13,7 +13,7 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
 SimpleCov.start
 
 # ENV['RACK_ENV'] = 'test'
-require 'feature/web_helpers'
+require 'features/web_helpers'
 
 ENV['ENVIRONMENT'] = 'test'
 

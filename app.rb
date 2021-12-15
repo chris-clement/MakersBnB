@@ -42,13 +42,13 @@ class MakersBnb < Sinatra::Base
     redirect '/home'
   end
 
-  get '/makersbnb/list_a_space' do
+  get '/list_a_space' do
     erb :'list_a_space'
   end
 
-  post '/makersbnb/listing_created' do
+  post '/listing_created' do
     if MakersBnb_Listings.exist?(space_name: params[:Name])
-        redirect '/makersbnb/list_a_space'
+        redirect '/list_a_space'
     else
       MakersBnb_Listings.create_space(space_name: params[:Name], price: params[:Price], description: params[:Description])
       @space_name = params[:Name]
@@ -62,12 +62,14 @@ class MakersBnb < Sinatra::Base
     erb :add_booking
   end
 
+  # We want space name variable as the route instead of 'booking'
   get '/booking/date_selection' do
     @dates = Bookings.print_dates
     @checked_availability = Bookings.check_availability(@dates)
     erb :booking_date_selection
   end
 
+  # We want space name variable as the route instead of 'booking'
   get '/booking/confirm_booking/:date' do
     Bookings.add_booking(params[:date])
     @date_booked = params[:date]
