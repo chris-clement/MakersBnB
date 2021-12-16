@@ -25,8 +25,8 @@ class MakersBnb < Sinatra::Base
   end
 
   get '/home' do
-    p session[:user_id]
     if User.valid(session[:username], session[:password])
+      session[:user_id] = User.user_id(username: session[:username])
       @listings = MakersBnb_Listings.view_listings
       @username = session[:username]
       erb :home
@@ -54,7 +54,6 @@ class MakersBnb < Sinatra::Base
   post '/user_details' do
     session[:username] = params[:username]
     session[:password] = params[:password]
-    session[:user_id] = User.user_id(username: params[:username])
     redirect '/home'
   end
 

@@ -7,7 +7,11 @@ class User
   
   def self.valid(username, password)
     result = DatabaseConnection.query("SELECT password FROM users WHERE username = $1;", [username])
-    result[0]['password'] == password
+    if result.count.zero?
+      false
+    else
+      result[0]['password'] == password
+    end
   end
 
 
