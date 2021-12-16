@@ -125,15 +125,15 @@ class MakersBnb < Sinatra::Base
     @booked_dates = []
     @user_spaces.each do |space_1|
       @user_spaces_id << Updater.space_id(space: space_1)[0].to_i
-      Bookings.booked_dates(Updater.space_id(space: space_1)[0].to_i).each do |date|
-        array = [space_1,date] 
+      Bookings.booked_dates(Updater.space_id(space: space_1)[0].to_i).each do |date, id|
+        array = [space_1,date, id] 
         @booked_dates << array
       end
     end
     if @booked_dates.nil?
+      @booked_dates = ["No-one"]
       @approved_array = ["You have no approvals to do!"]
     else
-      puts @booked_dates
       @approved_array = Bookings.approved?(@booked_dates)
     end
 
@@ -141,13 +141,13 @@ class MakersBnb < Sinatra::Base
     erb :check_request
   end
 
-  get '/check_request/approve/:date' do
-    Bookings.approve_booking(params[:date])
+  get '/check_request/approve/:id' do
+    Bookings.approve_booking(params[:id])
     redirect '/check_request'
   end
 
-  get '/check_request/disapprove/:date' do
-    Bookings.disapprove_booking(params[:date])
+  get '/check_request/disapprove/:id' do
+    Bookings.disapprove_booking(params[:id])
     redirect '/check_request'
   end
 
