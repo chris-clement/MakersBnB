@@ -118,7 +118,7 @@
       },
       "/Users/chrisclement/Desktop/Projects/Makers/Week5/MakersBnB/MakersBnB/lib/bookings.rb": {
         "lines": [
-          1,
+          null,
           1,
           1,
           1,
@@ -183,7 +183,7 @@
           null,
           null,
           1,
-          145,
+          159,
           null,
           null
         ]
@@ -196,20 +196,10 @@
           null,
           1,
           7,
-          7,
-          null,
-          0,
-          null,
-          7,
           null,
           null,
           null,
           1,
-          7,
-          7,
-          null,
-          0,
-          null,
           7,
           7,
           null,
@@ -299,13 +289,6 @@
           1,
           1,
           1,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
           null,
           null,
           null,
@@ -588,6 +571,6 @@
         ]
       }
     },
-    "timestamp": 1639651778
+    "timestamp": 1639652348
   }
 }

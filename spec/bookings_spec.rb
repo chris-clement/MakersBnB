@@ -47,13 +47,6 @@ describe Bookings do
     end
   end
 
-  # describe '#approve_booking' do
-  #   it 'sets a given date as approved' do
-  #     Bookings.add_booking('20-12-2021')
-  #     expect(Bookings.approve_booking('20-12-2021')).to 
-  #   end
-  # end
-
   describe '.approved?' do
     context 'a date has been approved'
     it 'returns true' do
