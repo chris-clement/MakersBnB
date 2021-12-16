@@ -21,5 +21,10 @@ class Bookings
   def self.add_booking(date)
     DatabaseConnection.query("INSERT INTO bookings(date) VALUES($1);", [date])
   end
+
+  def self.remove_booking(date)
+    DatabaseConnection.query("DELETE FROM bookings WHERE date = $1;", [date])
+  end
+    
     
 end

@@ -90,10 +90,22 @@ class MakersBnb < Sinatra::Base
   get '/change_listing_days/:spaces' do
     session[:space_id] = params[:spaces] 
       if Updater.confirm_user(space_id: session[:space_id], user_id: session[:user_id])
-      erb :change_listing_days
+        @dates = Bookings.print_dates
+        @checked_availability = Bookings.check_availability(@dates)
+        erb :change_listing_days
       else
         'YOU CANNOT ACCESS THIS PAGE'
       end
+    end
+
+    get '/change_listing_days_unavailable/:date' do
+      Bookings.add_booking(params[:date])
+      redirect '/update_booking'
+    end
+
+    get '/change_listing_days_available/:date' do
+      Bookings.remove_booking(params[:date])
+      redirect '/update_booking'
     end
 
 end
