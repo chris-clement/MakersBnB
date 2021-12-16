@@ -74,15 +74,16 @@ class MakersBnb < Sinatra::Base
   end
 
   # We want space name variable as the route instead of 'booking'
-  get '/booking/date_selection' do
+  get '/booking/date_selection/:id' do
+    session[:space_id] = params[:id]
     @dates = Bookings.print_dates
-    @checked_availability = Bookings.check_availability(@dates)
+    @checked_availability = Bookings.check_availability(@dates, session[:space_id])
     erb :booking_date_selection
   end
 
   # We want space name variable as the route instead of 'booking'
-  get '/booking/confirm_booking/:date' do
-    Bookings.add_booking(params[:date])
+  get '/booking/confirm_booking/:id/:date' do
+    Bookings.add_booking(params[:date], session[:space_id], session[:user_id])
     @date_booked = params[:date]
     erb :booking_confirm_booking
   end

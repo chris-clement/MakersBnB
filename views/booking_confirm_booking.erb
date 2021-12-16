@@ -1,5 +1,5 @@
-<h2> Booking confirmed for <%= @date_booked %> </h2>
+<h2> Booking confirmed for <%= @date_booked %> Space ID: <%= session[:space_id] %> </h2>
 
-<form action="/booking/date_selection" method='get'>
+<form action="/booking/date_selection/<%= session[:space_id]%>" method='get'>
 <input type='submit' value='Back to dates'>
 </form>
