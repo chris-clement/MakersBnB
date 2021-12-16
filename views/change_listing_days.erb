@@ -1,14 +1,13 @@
 <h2> Change availability below </h2>
 <ul>
 <% @dates.zip(@checked_availability).each do |date, available| %>
- <li> <%= date %> <%= available %> <% if available != "Bookable" %>
+ <li> <%= date %> <%= available %> 
  <form action = '/change_listing_days_unavailable/<%= date %>' method='get'> 
  <input type='submit' value='Set Unavailable'>
  </form>
  <form action = '/change_listing_days_available/<%= date %>' method='get'> 
  <input type='submit' value='Available'>
  </form>
- <%end%>
  </li>
 <%end%> 
 </ul>

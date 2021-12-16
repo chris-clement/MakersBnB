@@ -18,6 +18,7 @@
   <div class = "nav-list">
    <a href="/check_request">Check Request</a> |
    <a href="/list_a_space">List a Space</a> |
+   <a href='/update_booking'>Update a Space</a> |
    <a href="/">Logout</a> |
    <p id='username'><i class="fas fa-user"></i><%= @username %> </p>
   </div>
@@ -32,8 +33,8 @@
       Price: <%= listing['price'] %>
       <br>
       </div>
-      <% end %>
-      <form action='/booking/date_selection' method='get'>
+      <form action='/booking/date_selection/<%= Updater.space_id(space: listing['name'])[0].to_i%>' method='get'>
       <input type="submit" value="Book Now">
-    </form>
+      </form>
+      <% end %>
 </body>
