@@ -32,6 +32,15 @@ class MakersBnb < Sinatra::Base
     end
   end
 
+  get '/sign_up' do
+    erb :sign_up
+  end
+
+  post '/sign_up_details' do
+    flash[:notice] = 'Thanks for signing up to MakersBnB'
+    redirect '/login'
+  end
+
   get '/login' do
     erb :login
   end

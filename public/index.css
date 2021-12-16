@@ -13,7 +13,7 @@
   color: red;
   font-size: 2rem;
 }
-#login-btn {
+.login-signup-btn {
   background-color: white;
   position: fixed;
   top: 70;

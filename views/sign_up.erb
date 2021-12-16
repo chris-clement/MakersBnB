@@ -1,0 +1,32 @@
+<head>
+  <link href="<%= url('/login.css') %>" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <div id='top-bar'>
+    <div id='logo'>
+    </div>
+    <h1>Welcome to MakersBnB</h1>
+  </div>
+
+ <div id='form-container'>
+    <form action="/sign_up_details" method="post">
+      <input type="text" name="username" placeholder="username" class='username'>
+      <br>
+      <input type="password" name="password" placeholder="password" id='password'>
+      <br>
+      <input type="text" name="email" placeholder="example@email.com" class='username'>
+      <br>
+      <input type="text" name="phone_number" placeholder="07123456789" class='username'>
+      <br>
+      <input type="submit" value="Submit" id='login-btn'>
+    </form>
+
+    <% flash.keys.each do |type| %>
+      <div data-alert class="flash <%= type %> alert-box radius">
+        <%= flash[type] %>
+        <a href="/login" class="close">&times;</a>
+      </div>
+    <% end %>
+
+  </div>
+</body>

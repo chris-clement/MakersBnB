@@ -44,7 +44,7 @@
           1,
           null,
           1,
-          14,
+          15,
           null,
           null,
           1,
@@ -58,7 +58,16 @@
           null,
           null,
           1,
-          14,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          15,
           null,
           null,
           1,
@@ -118,7 +127,6 @@
       },
       "/Users/chrisclement/Desktop/Projects/Makers/Week5/MakersBnB/MakersBnB/lib/bookings.rb": {
         "lines": [
-          null,
           1,
           1,
           1,
@@ -183,7 +191,7 @@
           null,
           null,
           1,
-          159,
+          160,
           null,
           null
         ]
@@ -497,6 +505,22 @@
           null
         ]
       },
+      "/Users/chrisclement/Desktop/Projects/Makers/Week5/MakersBnB/MakersBnB/spec/features/signing_up_spec.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
       "/Users/chrisclement/Desktop/Projects/Makers/Week5/MakersBnB/MakersBnB/spec/features/view_created_listing_spec.rb": {
         "lines": [
           1,
@@ -571,6 +595,6 @@
         ]
       }
     },
-    "timestamp": 1639652348
+    "timestamp": 1639654104
   }
 }
