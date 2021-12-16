@@ -1,28 +1,40 @@
-<head>
+
+<!DOCTYPE html>
+<head> 
+  <link href="<%= url('/view_all_listings.css') %>" rel="stylesheet" type="text/css" />
   <link href="<%= url('/home.css') %>" rel="stylesheet" type="text/css" />
   <script src="https://kit.fontawesome.com/ea92a85679.js" crossorigin="anonymous"></script>
 </head>
 
-<body>
   <div id='welcome'>
     <div id='logo'>
     </div>
     <h1>Welcome to MakersBnB</h1>
   </div>
 
-  <nav>
-    <p id='home'><i class="fas fa-home"></i> Home</p>
-    <div id='nav-links'>
-      <a href="/list_a_space">List a Space</a> |
-      <a href="/check_request">Check Request</a> |
-      <a href="/">Logout</a> |
-      <p id='username'><i class="fas fa-user"></i><%= @username %> </p>
-    <div>
-  </nav>
+<body>
 
-  <section>
-    <form action='/booking/date_selection' method='get'>
+<nav> 
+  <p id='home'><i class="fas fa-home"></i> Home</p>
+  <div class = "nav-list">
+   <a href="/check_request">Check Request</a> |
+   <a href="/list_a_space">List a Space</a> |
+   <a href="/">Logout</a> |
+   <p id='username'><i class="fas fa-user"></i><%= @username %> </p>
+  </div>
+</nav>
+
+    <% @listings.each do |listing| %>
+    <div id='space-container'>
+      Name: <%= listing['name'] %>
+      <br>
+      Description: <%= listing['description'] %>
+      <br>
+      Price: <%= listing['price'] %>
+      <br>
+      </div>
+      <% end %>
+      <form action='/booking/date_selection' method='get'>
       <input type="submit" value="Book Now">
     </form>
-  </section>
 </body>

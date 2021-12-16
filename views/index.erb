@@ -1,5 +1,5 @@
 <head> 
-  <link href="<%= url('/index.css') %>" rel="stylesheet" type="text/css" />
+  <link href="<%= url('/view_all_listings.css') %>" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -18,12 +18,15 @@
     </form>
 </div>
   <h3> Discover places to stay </h3>
+    <% @listings.each do |listing| %>
+    <div id='space-container'>
+      Name: <%= listing['name'] %>
+      <br>
+      Description: <%= listing['description'] %>
+      <br>
+      Price: <%= listing['price'] %>
+      <br>
+      </div>
+      <% end %>
 
-  <div id='space-container'>
-    Name: London Pad 
-    <br>
-    Description: Kensington Flat
-    <br>
-    Price: £300
-  </div>
 </body>
