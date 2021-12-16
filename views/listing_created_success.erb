@@ -1,20 +1,36 @@
 <head>
-  <title>List a space</title>
-  <link rel="stylesheet" type="text/css" href="<%= url("/listing_style.css")%>">
+  <title>Listing created</title>
+  <link rel="stylesheet" type="text/css" href="<%= url("/listing_form_style.css")%>">
 </head>
 
-<a href="/home">Home</a>
-
-  <div class = "container">
-  <a href="/makersbnb/list_a_space">List another space</a>
-
-  <h3>Listing Successful</h3>
-
-  <div class = "listing_preview">
-    <h3>Here's your listing</h3>
-   <span> Space name:<%= @space_name %></span>
-   <span> Price: £<%= @price %></span>
-   <span> Description: <%= @description %></span>
+  <div id='top-bar'>
+    <div id='logo'>
+    </div>
+    <h1> MakersBnB </h1>
   </div>
 
-</div>
+<body>
+
+    <nav>
+      <div class = "nav-list">
+      <div><a href="/home">Home</a></div>
+      <div><a href="/add_booking">Book a Space</a></div>
+      <div><a href="/list_a_space">List a Space</a></div>
+      <div><%= @username %></div>
+      </div>
+    </nav>
+
+    <div class = "container">
+    
+      <h3>Listing created:</h3>
+
+      <div id='space-container'>
+          Name: <%= @space_name %>
+          <br>
+          Price: £<%= @price %>
+          <br>
+          Description: <%= @description %>
+          <br>
+       </div>
+    </div>
+</body>
