@@ -1,14 +1,33 @@
-<h2> Choose your date below </h2>
-<form action="/home">
-  <input type='submit' value='Home'>
-</form>
-<ul>
-<% @dates.zip(@checked_availability).each do |date, available| %>
- <li> <%= date %> <%= available %> <% if available != "Not Available" %>
- <form action = '/booking/confirm_booking/<%= date %>' method='get'> 
- <input type='submit' value='Book'>
- </form>
- <%end%>
- </li>
-<%end%> 
-</ul>
+<head>
+  <link href="<%= url('/booking_date_selection.css') %>" rel="stylesheet" type="text/css" />
+  <script src="https://kit.fontawesome.com/ea92a85679.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div id='header'>
+    <div id='logo'>
+    </div>
+    <h1>MakersBnB</h1>
+  </div>
+
+  <nav>
+    <a href="/home" id='home'><i class="fas fa-home"></i> Home</a>
+    <div id='nav-links'>
+      <a href="/">Logout</a><i class="fas fa-user"></i>
+    <div>
+  </nav>
+
+  <h1> You've chosen: London Road</h1>
+  <h2> Choose your date below </h2>
+  <ul>
+    <p></p>
+  <% @dates.zip(@checked_availability).each do |date, available| %>
+    <li> <span><%= date %></span> - <%= available %> <% if available != "Not Available" %>
+    <form action = '/booking/confirm_booking/<%= date %>' method='get'> 
+      <input type='submit' value='Book' id='book-btn'>
+    </form>
+    <%end%>
+    </li>
+  <%end%> 
+  </ul>
+</body>

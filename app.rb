@@ -58,10 +58,6 @@ class MakersBnb < Sinatra::Base
     end
   end
 
-  get '/add_booking' do
-    erb :add_booking
-  end
-
   # We want space name variable as the route instead of 'booking'
   get '/booking/date_selection' do
     @dates = Bookings.print_dates

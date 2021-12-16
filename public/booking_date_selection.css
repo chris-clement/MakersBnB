@@ -1,0 +1,80 @@
+body {
+  text-align: center;
+}
+#logo {
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQO7Wg2cD5bQcc6ehPAU3QAdhCCwbDop2pM5Q&usqp=CAU');
+  background-size: contain;
+  width: 40px;
+  height: 40px;
+}
+#header {
+  background-color: #ffe6e6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  color: red;
+  font-size: 2rem;
+}
+a {
+  text-decoration: none;
+  color: red;
+  border-radius: 5px;
+  padding: 0.5rem;
+}
+a:hover {
+  color: blue;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+  margin-top: 10px;
+}
+#nav-links {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 8rem;
+}
+.fa-home {
+  font-size: 1.2rem;
+}
+ul {
+  /* background-color: yellow; */
+  display: flex;
+  flex-direction: column;
+  max-width: 420px;
+  width: 100%;
+  margin: auto;
+  padding: 0.5rem;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+li {
+  display: flex;
+  /* background-color: red; */
+  align-items: center;
+  border-bottom: 1px solid black;
+  width: 20rem;
+  height: 2rem;
+  margin: auto;
+  padding: 0.8rem 1rem;
+}
+#book-btn {
+  background-color: red;
+  color: white;
+  width: 6rem;
+  border-radius: 8px;
+  padding: 0.3rem;
+  margin: 1rem auto auto 3rem;
+}
+span {
+  font-weight: bold;
+}
+p {
+  border-top: 1px solid black;
+  width: 22rem;
+  margin: auto;
+}

@@ -8,7 +8,7 @@ feature 'Approve a booking request' do
     click_on('Login')
     click_on('Check Request')
     click_on('Approve')
-    expect(page).to have_content('Approved 18-12-2021')
+    expect(page).to have_content('18-12-2021 - Approved')
   end
 end
 
@@ -22,6 +22,6 @@ feature 'Disapprove a booking request' do
     click_on('Login')
     click_on('Check Request')
     click_on('Disapprove')
-    expect(page).to have_content('Disapproved 18-12-2021')
+    expect(page).to have_content('18-12-2021 - Disapproved')
   end
 end

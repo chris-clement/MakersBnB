@@ -1,0 +1,84 @@
+#logo {
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQO7Wg2cD5bQcc6ehPAU3QAdhCCwbDop2pM5Q&usqp=CAU');
+  background-size: contain;
+  width: 40px;
+  height: 40px;
+}
+#header {
+  background-color: #ffe6e6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  color: red;
+  font-size: 2rem;
+}
+a {
+  text-decoration: none;
+  color: red;
+  border-radius: 5px;
+  padding: 0.5rem;
+}
+a:hover {
+  color: blue;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+  margin-top: 10px;
+}
+#nav-links {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 15rem;
+}
+.fa-home {
+  font-size: 1.2rem;
+}
+#booking-requests {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+}
+#pend-btn-container {
+  display: flex;
+  border-bottom: 1px solid black;
+  padding: 1rem 0 1rem 0.5rem;
+}
+#pending {
+  display: flex;
+}
+#approved, #disapproved {
+  display: flex;
+  background-color: rgba(230, 255, 255, 0.5);
+  padding: 1rem 0 1rem 0.5rem;
+  border-bottom: 1px solid black;
+}
+#disapproved {
+  background-color: rgba(255, 230, 255, 0.2);
+}
+span {
+  font-weight: bold;
+}
+#space-img {
+  background-image: url('https://www.et-law.co.uk/wp-content/uploads/2018/03/should-i-buy-a-house-or-a-flat-e1553171515201.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 9rem;
+  height: 5rem;
+  margin-right: 1rem;
+  border: 2px solid black;
+}
+#app-btn, #dis-btn {
+  margin-left: 2rem;
+  width: 6rem;
+  border-radius: 8px;
+  padding: 0.2rem;
+  background-color: rgba(230, 255, 255, 0.5);
+}
+#dis-btn {
+  background-color: rgba(255, 230, 255, 0.5);
+}

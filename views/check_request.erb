@@ -1,19 +1,46 @@
-<h2>Current Booking Request:</h2> 
-<form action="/home">
-  <input type='submit' value='Home'>
-</form>
-London Road, <% @booked_dates.zip(@approved_array).each do |date, approval_status| %>
-  <% if  approval_status == 'pending' %>
-  <%= date %>
-  <form action='/check_request/approve/<%= date %>' method='get'>
-  <input type='submit' value='Approve'>
-  </form>
-  <form action='/check_request/disapprove/<%= date %>' method='get'>
-  <input type='submit' value='Disapprove'>
-  </form>
-  <% elsif approval_status == true %>
-  <div> Approved <%= date %> </div>
-  <% else %>
-  <div> Disapproved <%= date %> </div>
-  <% end %>
-<% end %>
+<head>
+  <link href="<%= url('/check_request.css') %>" rel="stylesheet" type="text/css" />
+  <script src="https://kit.fontawesome.com/ea92a85679.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div id='header'>
+    <div id='logo'>
+    </div>
+    <h1>MakersBnB</h1>
+  </div>
+
+  <nav>
+    <a href="/home" id='home'><i class="fas fa-home"></i> Home</a>
+    <div id='nav-links'>
+      <a href="/list_a_space">List a Space</a> |
+      <a href="/">Logout</a><i class="fas fa-user"></i>
+    <div>
+  </nav>
+
+  <h2>Current Booking Request:</h2> 
+  
+  <div id='booking-requests'>
+    <% @booked_dates.zip(@approved_array).each do |date, approval_status| %>
+      
+      <% if  approval_status == 'pending' %>
+      <div id='pend-btn-container'>
+      <%# add list of all spaces and images %>
+        <div id='pending'><div id='space-img'></div>London Road, <%= date %></div>
+        <form action='/check_request/approve/<%= date %>' method='get'>
+          <input type='submit' value='Approve' id='app-btn'>
+        </form>
+        <form action='/check_request/disapprove/<%= date %>' method='get'>
+          <input type='submit' value='Disapprove' id='dis-btn'>
+        </form>
+      </div>
+    
+      <% elsif approval_status == true %>
+        <div id='approved'><div id='space-img'></div> London Road, <%= date %> - <span>Approved</span> </div>
+      <% else %>
+        <div id='disapproved'><div id='space-img'></div> London Road, <%= date %> - <span>Disapproved</span> </div>
+      <% end %>
+    <% end %>
+  </div>
+  
+</body>

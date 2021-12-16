@@ -1,6 +1,28 @@
+<head>
+  <link href="<%= url('/home.css') %>" rel="stylesheet" type="text/css" />
+  <script src="https://kit.fontawesome.com/ea92a85679.js" crossorigin="anonymous"></script>
+</head>
+
 <body>
-  <h1> <%= @username %> </h1>
-  <a href="/list_a_space">List a Space</a>
-  <a href="/add_booking">Book a Space</a>
-  <a href="/check_request">Check Request</a>
+  <div id='welcome'>
+    <div id='logo'>
+    </div>
+    <h1>Welcome to MakersBnB</h1>
+  </div>
+
+  <nav>
+    <p id='home'><i class="fas fa-home"></i> Home</p>
+    <div id='nav-links'>
+      <a href="/list_a_space">List a Space</a> |
+      <a href="/check_request">Check Request</a> |
+      <a href="/">Logout</a> |
+      <p id='username'><i class="fas fa-user"></i><%= @username %> </p>
+    <div>
+  </nav>
+
+  <section>
+    <form action='/booking/date_selection' method='get'>
+      <input type="submit" value="Book Now">
+    </form>
+  </section>
 </body>
