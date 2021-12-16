@@ -24,6 +24,7 @@ class Bookings
     
   def self.booked_dates(space_id)
     dates = DatabaseConnection.query("SELECT date FROM bookings WHERE space_id = $1;", [space_id])
+    puts dates
     dates.map { |date| date['date'] }
   end
   
