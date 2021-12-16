@@ -120,8 +120,17 @@ class MakersBnb < Sinatra::Base
     end
 
   get '/check_request' do
-    @booked_dates = Bookings.booked_dates
+    @user_spaces = Updater.list(id: session[:user_id])
+    p "HELLO" 
+    p Updater.space_id(space: @user_spaces[0])
+    @user_spaces.each do |space_1|
+      @user_spaces_id << Updater.space_id(space: space_1)
+      Bookings.booked_dates(Updater.space_id(space: space_1)).each do |date| 
+        @booked_dates << [space, date]
+      end
+    end
     @approved_array = Bookings.approved?(@booked_dates)
+
     erb :check_request
   end
 

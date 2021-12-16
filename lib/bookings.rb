@@ -22,8 +22,8 @@ class Bookings
   end
     
     
-  def self.booked_dates
-    dates = DatabaseConnection.query("SELECT date FROM bookings;")
+  def self.booked_dates(space_id)
+    dates = DatabaseConnection.query("SELECT date FROM bookings WHERE space_id = $1;", [space_id])
     dates.map { |date| date['date'] }
   end
   
@@ -36,7 +36,7 @@ class Bookings
   end
 
   def self.approved?(dates = []) 
-    dates.map do |date|
+    dates.map do |name, date|
       result = DatabaseConnection.query("SELECT approved FROM bookings WHERE date=$1;", [date])
       if result.first['approved'] == 't'
         true
