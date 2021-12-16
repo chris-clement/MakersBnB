@@ -1,5 +1,35 @@
+<!DOCTYPE html>
+<head> 
+  <link href="<%= url('/view_all_listings.css') %>" rel="stylesheet" type="text/css" />
+</head>
+
+  <div id='top-bar'>
+    <div id='logo'>
+    </div>
+    <h1> MakersBnB </h1>
+  </div>
+
 <body>
-  <h1> <%= @username %> </h1>
-  <a href="/list_a_space">List a Space</a>
-  <a href="/add_booking">Book a Space</a>
+
+<nav> 
+  <div class = "nav-list">
+   <div><a href="/home">Home</a></div>
+   <div><a href="/add_booking">Book a Space</a></div>
+   <div><a href="/list_a_space">List a Space</a></div>
+   <div><%= @username %></div>
+  </div>
+</nav>
+
+    <% @listings.each do |listing| %>
+    <div id='space-container'>
+      Name: <%= listing['name'] %>
+      <br>
+      Description: <%= listing['description'] %>
+      <br>
+      Price: <%= listing['price'] %>
+      <br>
+      </div>
+      <% end %>
+    
+
 </body>

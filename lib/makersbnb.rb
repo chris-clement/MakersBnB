@@ -26,4 +26,17 @@ class MakersBnb_Listings
   def self.unsuccessful 
     @unsuccessful 
   end
+
+  def self.view_listings
+    if ENV['ENVIRONMENT'] == 'test'
+      connection = PG.connect(dbname: 'makers_bnb_test')
+    else
+      connection = PG.connect(dbname: 'makers_bnb')
+    end
+    result = connection.exec("SELECT * FROM spaces;")
+    result.to_a
+    
+    #, RETURNING name, price, description;", [name, price, description])
+    #result.map { |listing| listing['name']}
+  end
 end

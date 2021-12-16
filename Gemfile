@@ -11,6 +11,7 @@ gem 'rack'
 gem 'sinatra'
 gem 'sinatra-contrib'
 gem 'sinatra-flash', '~> 0.3.0'
+gem 'webrick'
 
 group :test do
   gem 'capybara'
