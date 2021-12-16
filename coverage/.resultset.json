@@ -33,6 +33,7 @@
           1,
           1,
           1,
+          1,
           null,
           null,
           null,
@@ -52,6 +53,7 @@
           1,
           14,
           14,
+          13,
           13,
           13,
           13,
@@ -293,6 +295,18 @@
           1,
           2,
           2,
+          null,
+          null
+        ]
+      },
+      "/Users/rikytraveller/Projects/MakersBnB/lib/images.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          null,
+          1,
+          13,
           null,
           null
         ]
@@ -750,6 +764,6 @@
         ]
       }
     },
-    "timestamp": 1639667622
+    "timestamp": 1639678981
   }
 }

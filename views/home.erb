@@ -6,12 +6,13 @@
 </head>
 
 <body>
+  <%# header %>
   <div id='welcome'>
   <div id='logo'>
   </div>
     <h1>Welcome to MakersBnB</h1>
   </div>
-
+  <%# navbar %>
   <nav> 
     <p id='home'><i class="fas fa-home"></i> Home</p>
     <div id="nav-links">
@@ -21,18 +22,26 @@
       <p id='username'><i class="fas fa-user"></i><%= @username %> </p>
     </div>
   </nav>
-
+  <%# main section %>
     <% @listings.each do |listing| %>
-    <div id='space-container'>
-      Name: <%= listing['name'] %>
-      <br>
-      Description: <%= listing['description'] %>
-      <br>
-      Price: <%= listing['price'] %>
-      <br>
+
+  <div id='space-container'>
+    <img src="<%=@space_url%>" alt='space'>
+      
+      <div id='details-space'>
+        <h4 d='name'><%= listing['name'] %></h4>
+        <%# <span>Description:</span>  %>
+        <div id='description'>
+          <p><%= listing['description'] %></p>
+        </div>
+        <div id='price'>
+         £<%= listing['price'] %> /night
+        </div>
       </div>
-      <% end %>
+
       <form action='/booking/date_selection' method='get'>
-      <input type="submit" value="Book Now">
-    </form>
+        <input type="submit" value="Book Now" id='book-now'>
+      </form>
+  </div>
+    <% end %>
 </body>

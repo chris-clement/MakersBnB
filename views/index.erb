@@ -3,12 +3,12 @@
 </head>
 
 <body>
-  <div id='top-bar'>
-    <div id='logo'>
-    </div>
+  <%# header %>
+  <header id='top-bar'>
+    <div id='logo'></div>
     <h1> MakersBnB </h1>
-  </div>
-
+  </header> 
+  <%# login sign up buttons %>
   <div id='login-signup-container'>
       <form action="/login" method="get">
         <input type="submit" value="Login" id='login-btn'>
@@ -19,15 +19,23 @@
   </div>
 
   <h3> Discover places to stay </h3>
-    <% @listings.each do |listing| %>
-    <div id='space-container'>
-      Name: <%= listing['name'] %>
-      <br>
-      Description: <%= listing['description'] %>
-      <br>
-      Price: <%= listing['price'] %>
-      <br>
-      </div>
-      <% end %>
 
+    <% @listings.each do |listing| %>
+  <div id='space-container'>
+    <img src="<%=@space_url%>" alt='space'>
+      <div id='details-space'>
+        <h4 d='name'><%= listing['name'] %></h4>
+        <%# <span>Description:</span>  %>
+        <div id='description'>
+          <p><%= listing['description'] %></p>
+        </div>
+        <div id='price'>
+         £<%= listing['price'] %> /night
+        </div>
+      </div>
+      <form action='/booking/date_selection' method='get'>
+        <input type="submit" value="Book Now" id='book-now'>
+      </form>
+  </div>
+    <% end %>
 </body>

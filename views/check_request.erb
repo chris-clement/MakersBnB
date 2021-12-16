@@ -26,7 +26,7 @@
       <% if  approval_status == 'pending' %>
       <div id='pend-btn-container'>
       <%# add list of all spaces and images %>
-        <div id='pending'><div id='space-img'></div>London Road, <%= date %></div>
+        <div id='pending'><div id='space-img'></div>London Road, <%= date</div> %>
         <form action='/check_request/approve/<%= date %>' method='get'>
           <input type='submit' value='Approve' id='app-btn'>
         </form>

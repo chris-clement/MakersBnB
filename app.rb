@@ -28,7 +28,7 @@ class MakersBnb < Sinatra::Base
     p session[:user_id]
     if User.valid(session[:username], session[:password])
       @listings = MakersBnb_Listings.view_listings
-      @username = session[:username]
+      @space_url = session[:space_url]
       erb :home
     else
       flash[:notice] = 'Invalid username or password'
@@ -67,6 +67,7 @@ class MakersBnb < Sinatra::Base
         redirect '/list_a_space'
     else
       MakersBnb_Listings.create_space(space_name: params[:Name], price: params[:Price], description: params[:Description], user_id: session[:user_id  ])
+      session[:space_url] = params[:space_url]
       @space_name = params[:Name]
       @price = params[:Price]
       @description = params[:Description]

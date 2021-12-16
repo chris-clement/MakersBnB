@@ -1,6 +1,7 @@
 <head>
   <title>Listing created</title>
   <link rel="stylesheet" type="text/css" href="<%= url("/listing_form_style.css")%>">
+  <script src="https://kit.fontawesome.com/ea92a85679.js" crossorigin="anonymous"></script>
 </head>
 
   <div id='top-bar'>
@@ -12,11 +13,11 @@
 <body>
 
     <nav>
+      <a href="/home" id='home'><i class="fas fa-home"></i> Home</a>
       <div class = "nav-list">
-      <div><a href="/home">Home</a></div>
-      <div><a href="/add_booking">Book a Space</a></div>
-      <div><a href="/list_a_space">List a Space</a></div>
-      <div><%= @username %></div>
+        <a href="/add_booking">Book a Space</a>
+        <a href="/list_a_space">List a Space</a>
+        <a href="/">Logout</a><i class="fas fa-user"></i>
       </div>
     </nav>
 
