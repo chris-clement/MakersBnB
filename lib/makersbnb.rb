@@ -18,12 +18,7 @@ class MakersBnb_Listings
   end
 
   def self.view_listings
-    if ENV['ENVIRONMENT'] == 'test'
-      connection = PG.connect(dbname: 'makers_bnb_test')
-    else
-      connection = PG.connect(dbname: 'makers_bnb')
-    end
-    result = connection.exec("SELECT * FROM spaces;")
+    result = DatabaseConnection.query("SELECT * FROM spaces;")
     result.to_a
     
     #, RETURNING name, price, description;", [name, price, description])

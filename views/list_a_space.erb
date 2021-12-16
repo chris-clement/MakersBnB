@@ -1,34 +1,34 @@
 <head>
   <title>List a space</title>
   <link rel="stylesheet" type="text/css" href="<%= url("/listing_form_style.css")%>">
+  <script src="https://kit.fontawesome.com/ea92a85679.js" crossorigin="anonymous"></script>
 </head>
+<body>
+
   <div id='top-bar'>
     <div id='logo'>
     </div>
     <h1> MakersBnB </h1>
   </div>
 
-<body>
+  <nav> 
+   <a href="/home"> <p id='home'><i class="fas fa-home"></i> Home</p></a>
+    <div id="nav-links">
+      <a href="/check_request">Check Request</a> |
+      <a href="/">Logout</a><i class="fas fa-user"></i>
+    </div>
+  </nav>
 
-<nav>
-  <div class = "nav-list">
-   <div><a href="/home">Home</a></div>
-   <div><a href="/add_booking">Book a Space</a></div>
-   <div><a href="/list_a_space">List a Space</a></div>
-   <div><%= @username %></div>
+  <div class = "container">
+    <h1>Please create your listing</h1>
+    <%= if MakersBnb_Listings.unsuccessful == true then 
+    'Listing unsucessful. That name has been taken, please try again' end %>
+
+    <form class ="listing_form" action="/listing_created" method="post">
+      <input required type="text" name="Name" placeholder='My Awesome Space'/>
+      <input required type="number" min='0' name="Price" placeholder="Price per night" />
+      <input required type="text" name="Description" placeholder="Description"/>
+      <input type="submit" value="Submit" />
+    </form>
   </div>
-</nav>
-
-<div class = "container">
-  <h1>Please create your listing</h1>
-  <%= if MakersBnb_Listings.unsuccessful == true then 
-  'Listing unsucessful. That name has been taken, please try again' end %>
-
-  <form class ="listing_form" action="/listing_created" method="post">
-    <input required type="text" name="Name" placeholder='My Awesome Space'/>
-    <input required type="number" min='0' name="Price" placeholder="Price per night" />
-    <input required type="text" name="Description" placeholder="Description"/>
-    <input type="submit" value="Submit" />
-  </form>
-
-</div>
+</body>

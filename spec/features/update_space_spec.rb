@@ -1,7 +1,11 @@
 feature 'Update Space page' do
 
   scenario 'A user should be able to get to the update space page' do
+<<<<<<< HEAD
     # DatabaseConnection.query("INSERT INTO users(username, password) VALUES('firstuser', 'password');")
+=======
+    DatabaseConnection.query("INSERT INTO users(username, password) VALUES('firstuser', 'password');")
+>>>>>>> 8ef431c1f64cbe9995248f7f4e0139908447183d
     login_and_visit_home
     click_on('Update a Space')
     expect(page).to have_content("My Spaces")
@@ -9,10 +13,7 @@ feature 'Update Space page' do
 
   scenario 'The spaces of the user are listed on the update space page' do
     DatabaseConnection.query("INSERT INTO users(username, password) VALUES('firstuser', 'password');")
-    go_to_login_page
-    fill_in('username', with: 'firstuser')
-    fill_in('password', with: 'password')
-    click_on('Login')
+    login_and_visit_home
     create_listing('My Place')
     create_listing('My Place Two')
     visit'/home'
