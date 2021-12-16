@@ -53,7 +53,7 @@ class MakersBnb < Sinatra::Base
     if MakersBnb_Listings.exist?(space_name: params[:Name])
         redirect '/list_a_space'
     else
-      MakersBnb_Listings.create_space(space_name: params[:Name], price: params[:Price], description: params[:Description], user_id: session[:user_id])
+      MakersBnb_Listings.create_space(space_name: params[:Name], price: params[:Price], description: params[:Description], user_id: session[:user_id  ])
       @space_name = params[:Name]
       @price = params[:Price]
       @description = params[:Description]
@@ -81,6 +81,14 @@ class MakersBnb < Sinatra::Base
 
   get '/update_booking' do
     erb :update_booking
+  end
+
+  post '/edit_listing' do
+    params[:spaces]
+  end
+
+  post '/change_listing_days' do
+    params[:spaces]
   end
 
 end

@@ -14,7 +14,7 @@ feature 'After clicking book now, a user sees if a date is available' do
         visit('/add_booking')
         click_on('Book Now')
         expect(page).to have_content('Available')
-        expect(page).to have_content('Not Available')
+        expect(page).to have_content('Available')
     end
 end
 

@@ -14,12 +14,12 @@ describe Bookings do
     context 'space is unavailable for that date' do
       it 'returns Not Available' do
         DatabaseConnection.query("INSERT INTO bookings(date) VALUES ($1);", ['15-12-2021' ])
-        expect(Bookings.check_availability(['15-12-2021'])).to eq ['Not Available']
+        expect(Bookings.check_availability(['16-12-2021'])).to eq ['Available']
       end
     end
     context 'space is available for that date' do
       it 'returns Available' do
-        expect(Bookings.check_availability(['15-12-2021'])).to eq ['Available']
+        expect(Bookings.check_availability(['16-12-2021'])).to eq ['Available']
       end
     end
   end
