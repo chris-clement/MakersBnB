@@ -126,6 +126,7 @@ class MakersBnb < Sinatra::Base
     @user_spaces.each do |space_1|
       @user_spaces_id << Updater.space_id(space: space_1)[0].to_i
       Bookings.booked_dates(Updater.space_id(space: space_1)[0].to_i).each do |date|
+        array = [space_1,date] 
         @booked_dates << array
       end
     end
