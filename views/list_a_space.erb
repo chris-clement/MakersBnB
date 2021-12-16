@@ -1,16 +1,28 @@
 <head>
   <title>List a space</title>
-  <link rel="stylesheet" type="text/css" href="<%= url("/listing_style.css")%>">
+  <link rel="stylesheet" type="text/css" href="<%= url("/listing_form_style.css")%>">
 </head>
+  <div id='top-bar'>
+    <div id='logo'>
+    </div>
+    <h1> MakersBnB </h1>
+  </div>
 
-<a href="/home">Home</a>
+<body>
+
+<nav>
+  <div class = "nav-list">
+   <div><a href="/home">Home</a></div>
+   <div><a href="/add_booking">Book a Space</a></div>
+   <div><a href="/list_a_space">List a Space</a></div>
+   <div><%= @username %></div>
+  </div>
+</nav>
 
 <div class = "container">
   <h1>Please create your listing</h1>
-
   <%= if MakersBnb_Listings.unsuccessful == true then 
   'Listing unsucessful. That name has been taken, please try again' end %>
-
 
   <form class ="listing_form" action="/listing_created" method="post">
     <input required type="text" name="Name" placeholder='My Awesome Space'/>
