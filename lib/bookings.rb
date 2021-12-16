@@ -27,8 +27,8 @@ class Bookings
     dates.map { |date| date['date'] }
   end
   
-  def self.approve_booking(date)
-   DatabaseConnection.query("UPDATE bookings SET approved = true WHERE date=$1;", [date])
+  def self.approve_booking(date, space_id, user_id)
+   DatabaseConnection.query("UPDATE bookings SET approved = true WHERE date=$1 AND space_id = $2 AND user_id = $3;", [date, space_id, user_id])
   end
 
   def self.disapprove_booking(date)
