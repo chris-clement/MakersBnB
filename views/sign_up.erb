@@ -9,12 +9,16 @@
   </div>
 
  <div id='form-container'>
-    <form action="/user_details" method="post">
-      <input type="text" name="username" placeholder="username" id='username'>
+    <form action="/sign_up_details" method="post">
+      <input type="text" name="username" placeholder="username" class='username'>
       <br>
       <input type="password" name="password" placeholder="password" id='password'>
       <br>
-      <input type="submit" value="Login" id='login-btn'>
+      <input type="text" name="email" placeholder="example@email.com" class='username'>
+      <br>
+      <input type="text" name="phone_number" placeholder="07123456789" class='username'>
+      <br>
+      <input type="submit" value="Submit" id='login-btn'>
     </form>
 
     <% flash.keys.each do |type| %>

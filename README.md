@@ -77,3 +77,5 @@ I'd like the site to look nice.
 
 ### Wireframe
 # ![Wireframe](https://github.com/chris-clement/MakersBnB/blob/main/screenshot/wireframe.png)
+
+
