@@ -38,6 +38,7 @@ class MakersBnb < Sinatra::Base
 
   post '/sign_up_details' do
     flash[:notice] = 'Thanks for signing up to MakersBnB'
+    User.create_user(params[:username], params[:password], params[:email], params[:phone_number])
     redirect '/login'
   end
 
