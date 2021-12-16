@@ -1,11 +1,11 @@
 <h1> My Spaces </h1>
 <h1> <% Updater.list(id: session[:user_id]).each do |spaces|%>
 <li> <%= spaces %> 
- <form action = '/edit_listing/<%= Updater.space_id(space: spaces) %>' method='post'> 
+ <form action = '/edit_listing/<%= (Updater.space_id(space: spaces))[0] %>' method='get'> 
  <input type='submit' value='Edit listing'>
  </form>
 
-<form action = '/change_listing_days/<%=  Updater.space_id(space: spaces) %>' method='post'> 
+<form action = '/change_listing_days/<%=  (Updater.space_id(space: spaces))[0]%>' method='get'> 
  <input type='submit' value='Edit availability'>
  </form>
 

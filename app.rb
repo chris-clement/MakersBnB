@@ -83,12 +83,17 @@ class MakersBnb < Sinatra::Base
     erb :update_booking
   end
 
-  post '/edit_listing' do
-    params[:spaces]
+  get '/edit_listing/:spaces' do
+    erb :edit_listing
   end
 
-  post '/change_listing_days' do
-    params[:spaces]
-  end
+  get '/change_listing_days/:spaces' do
+    session[:space_id] = params[:spaces] 
+      if Updater.confirm_user(space_id: session[:space_id], user_id: session[:user_id])
+      erb :change_listing_days
+      else
+        'YOU CANNOT ACCESS THIS PAGE'
+      end
+    end
 
 end

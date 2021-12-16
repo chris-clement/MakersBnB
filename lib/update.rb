@@ -18,4 +18,14 @@ class Updater
     end
   end
 
+   def self.confirm_user(space_id:, user_id:)
+    result = DatabaseConnection.query("SELECT * FROM spaces WHERE id = $1 AND user_id = $2;", [space_id, user_id])
+    p result.count
+    if result.count == 0
+      false
+    else
+      true
+    end
+  end 
+
 end
