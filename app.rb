@@ -19,9 +19,7 @@ class MakersBnb < Sinatra::Base
   register Sinatra::Flash
 
   get '/' do
-     
-    #@listings = MakersBnb_Listings.view_listings
-    #p @listings
+    @listings = MakersBnb_Listings.view_listings
     erb :index
   end
 
