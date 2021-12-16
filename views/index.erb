@@ -1,5 +1,5 @@
 <head> 
-  <link href="<%= url('/view_all_listings.css') %>" rel="stylesheet" type="text/css" />
+  <link href="<%= url('/index.css') %>" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -8,15 +8,16 @@
     </div>
     <h1> MakersBnB </h1>
   </div>
-<div id='login-signup-container'>
-    <form action="/login" method="get">
-      <input type="submit" value="login" id='login-btn'>
-    </form>
 
-    <form action="/sign_up" method="get">
-      <input type="submit" value="Sign Up" id='signup-btn'>
-    </form>
-</div>
+  <div id='login-signup-container'>
+      <form action="/login" method="get">
+        <input type="submit" value="Login" id='login-btn'>
+      </form>
+      <form action="/sign_up" method="get">
+        <input type="submit" value="Sign Up" id='signup-btn'>
+      </form>
+  </div>
+
   <h3> Discover places to stay </h3>
     <% @listings.each do |listing| %>
     <div id='space-container'>
