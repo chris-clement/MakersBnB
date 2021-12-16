@@ -1,0 +1,98 @@
+#logo {
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQO7Wg2cD5bQcc6ehPAU3QAdhCCwbDop2pM5Q&usqp=CAU');
+  background-size: contain;
+  width: 40px;
+  height: 40px;
+}
+#top-bar {
+  background-color: #ffe6e6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  color: red;
+  font-size: 2rem;
+}
+#login-btn {
+  background-color: white;
+  position: fixed;
+  top: 70;
+  right: 30;
+  width: 5rem;
+  height: 2rem;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+h3 {
+  display: flex;
+  justify-content: center;
+  font-size: 2rem;
+}
+#space-container {
+  max-width: 500px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin: auto;
+  margin-top: 0.5em;
+  border: 1px solid black;
+  padding: 1rem;
+}
+
+nav {
+  padding:2em
+}
+
+.nav-list {
+ display: flex;
+float:right;
+}
+
+.nav-list > div {
+ margin: 0em 0.5em;
+}
+
+.container {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* form styling */
+
+input {
+  font-size: 16px;
+  line-height: 28px;
+  padding: 8px 16px;
+  width: 100%;
+  min-height: 44px;
+  border: unset;
+  border-radius: 4px;
+  outline-color: rgb(84 105 212 / 0.5);
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
+              rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
+              rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
+              rgba(60, 66, 87, 0.16) 0px 0px 0px 1px, 
+              rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
+              rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
+              rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+}
+
+input[type="submit"] {
+  background-color: rgb(84, 105, 212);
+  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
+              rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
+              rgba(0, 0, 0, 0.12) 0px 1px 1px 0px, 
+              rgb(84, 105, 212) 0px 0px 0px 1px, 
+              rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
+              rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
+              rgba(60, 66, 87, 0.08) 0px 2px 5px 0px;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  max-width: 300px;
+  float: right;
+}

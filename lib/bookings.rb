@@ -1,4 +1,3 @@
-require 'pg'
 require './lib/database_connection'
 class Bookings
   def self.print_dates
@@ -9,12 +8,8 @@ class Bookings
 
   def self.check_availability(dates = [])
     dates.map do |date|
-      result = DatabaseConnection.query("SELECT space_id, date FROM bookings WHERE date = $1;", [date])
-      if result.count == 0
-        "Available"
-      else
-        "Not Available"
-      end
+      result = DatabaseConnection.query("SELECT space_id, date FROM bookings WHERE date = $1 AND approved = $2;", [date, true])
+      result.count.zero? ? "Available" : "Not Available"
     end
   end
 
@@ -27,4 +22,29 @@ class Bookings
   end
     
     
+  def self.booked_dates
+    dates = DatabaseConnection.query("SELECT date FROM bookings;")
+    dates.map { |date| date['date'] }
+  end
+  
+  def self.approve_booking(date)
+   DatabaseConnection.query("UPDATE bookings SET approved = true WHERE date=$1;", [date])
+  end
+
+  def self.disapprove_booking(date)
+    DatabaseConnection.query("UPDATE bookings SET approved = false WHERE date=$1;", [date])
+  end
+
+  def self.approved?(dates = []) 
+    dates.map do |date|
+      result = DatabaseConnection.query("SELECT approved FROM bookings WHERE date=$1;", [date])
+      if result.first['approved'] == 't'
+        true
+      elsif result.first['approved'] == 'f'
+        false
+      else
+        'pending'
+      end
+    end
+  end
 end

@@ -20,18 +20,31 @@ class MakersBnb < Sinatra::Base
   register Sinatra::Flash
 
   get '/' do
-     erb :index
+    @listings = MakersBnb_Listings.view_listings
+    erb :index
   end
 
   get '/home' do
     p session[:user_id]
     if User.valid(session[:username], session[:password])
+      @listings = MakersBnb_Listings.view_listings
       @username = session[:username]
       erb :home
     else
       flash[:notice] = 'Invalid username or password'
       redirect '/login'
     end
+    
+  end
+
+  get '/sign_up' do
+    erb :sign_up
+  end
+
+  post '/sign_up_details' do
+    flash[:notice] = 'Thanks for signing up to MakersBnB'
+    User.create_user(params[:username], params[:password], params[:email], params[:phone_number])
+    redirect '/login'
   end
 
   get '/login' do
@@ -61,10 +74,6 @@ class MakersBnb < Sinatra::Base
     end
   end
 
-  get '/add_booking' do
-    erb :add_booking
-  end
-
   # We want space name variable as the route instead of 'booking'
   get '/booking/date_selection' do
     @dates = Bookings.print_dates
@@ -78,6 +87,7 @@ class MakersBnb < Sinatra::Base
     @date_booked = params[:date]
     erb :booking_confirm_booking
   end
+
 
   get '/update_booking' do
     erb :update_booking
@@ -107,5 +117,22 @@ class MakersBnb < Sinatra::Base
       Bookings.remove_booking(params[:date])
       redirect '/update_booking'
     end
+
+  get '/check_request' do
+    @booked_dates = Bookings.booked_dates
+    @approved_array = Bookings.approved?(@booked_dates)
+    erb :check_request
+  end
+
+  get '/check_request/approve/:date' do
+    Bookings.approve_booking(params[:date])
+    redirect '/check_request'
+  end
+
+  get '/check_request/disapprove/:date' do
+    Bookings.disapprove_booking(params[:date])
+    redirect '/check_request'
+  end
+
 
 end

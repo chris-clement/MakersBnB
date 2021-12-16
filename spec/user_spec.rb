@@ -16,4 +16,12 @@ describe User do
       expect(user_password).to eq false
     end
   end
+
+  describe '.create_user' do
+    it 'stores user details into database' do
+      result = User.create_user('firstuser' , 'password' , 'example@email.com' , 7123456789)
+      expect(result[0]['username']).to eq 'firstuser'
+      expect(result[0]['email']).to eq 'example@email.com'
+    end
+  end
 end

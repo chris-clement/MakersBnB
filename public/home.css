@@ -1,0 +1,58 @@
+#logo {
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQO7Wg2cD5bQcc6ehPAU3QAdhCCwbDop2pM5Q&usqp=CAU');
+  background-size: contain;
+  width: 40px;
+  height: 40px;
+}
+#welcome {
+  background-color: #ffe6e6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  color: red;
+  font-size: 2rem;
+}
+a {
+  text-decoration: none;
+  color: red;
+  border-radius: 5px;
+  padding: 0.5rem;
+}
+a:hover {
+  color: blue;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+  margin-top: 10px;
+}
+#home {
+  margin: auto auto auto 0.5rem;
+}
+p {
+  color: red;
+}
+.fa-home {
+  font-size: 1.2rem;
+  color: black;
+}
+#nav-links {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 30rem;
+  /* margin: auto 1rem auto auto; */
+}
+.fa-user {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+#username {
+  margin-right: 0.8rem;
+  text-transform: capitalize;
+  font-weight: bold;
+  color: red;
+}
