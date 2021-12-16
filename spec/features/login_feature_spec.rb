@@ -7,11 +7,7 @@ feature 'we can log in' do
   end
 
   scenario 'fill out log in form with username and password' do
-    go_to_login_page
-    fill_in('username', with: 'firstuser')
-    fill_in('password', with: 'password')
-    expect(current_path).to eq '/login'
-    click_on('Login')
+    login_and_visit_home
     expect(page).to have_content 'firstuser'
   end
 end

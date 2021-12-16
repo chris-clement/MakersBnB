@@ -10,7 +10,7 @@ feature 'filling in form' do
   scenario 'once completed, a pop up will state the listing has been created ' do
     login_and_visit_home
     create_listing('My second space')
-    expect(page).to have_content("Listing Successful")
+    expect(page).to have_content("Listing created")
   end
   
   scenario 'can not name a space if that name already exists' do

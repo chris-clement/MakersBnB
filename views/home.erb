@@ -38,10 +38,9 @@
          £<%= listing['price'] %> /night
         </div>
       </div>
-
-      <form action='/booking/date_selection' method='get'>
-        <input type="submit" value="Book Now" id='book-now'>
+      <form action='/booking/date_selection/<%= Updater.space_id(space: listing['name'])[0].to_i%>' method='get'>
+      <input type="submit" value="Book Now" id='book-now'>
       </form>
-  </div>
-    <% end %>
+    </div>
+      <% end %>
 </body>
