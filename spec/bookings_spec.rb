@@ -21,6 +21,7 @@ describe Bookings do
       it 'returns not Available' do
         DatabaseConnection.query("INSERT INTO bookings(date, approved) VALUES ($1, $2);", ['15-12-2021', true])
         expect(Bookings.check_availability(['15-12-2021'])).to eq ['Not Available']
+
       end
     end
     context 'user has disapproved the booking' do

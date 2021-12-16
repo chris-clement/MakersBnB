@@ -7,6 +7,7 @@ require './lib/bookings'
 require_relative './lib/makersbnb'
 require './lib/user'
 require './database_connection_setup'
+require_relative './lib/update'
 
 
 # App class
@@ -24,6 +25,7 @@ class MakersBnb < Sinatra::Base
   end
 
   get '/home' do
+    p session[:user_id]
     if User.valid(session[:username], session[:password])
       @listings = MakersBnb_Listings.view_listings
       @username = session[:username]
@@ -52,6 +54,7 @@ class MakersBnb < Sinatra::Base
   post '/user_details' do
     session[:username] = params[:username]
     session[:password] = params[:password]
+    session[:user_id] = User.user_id(username: params[:username])
     redirect '/home'
   end
 
@@ -63,7 +66,7 @@ class MakersBnb < Sinatra::Base
     if MakersBnb_Listings.exist?(space_name: params[:Name])
         redirect '/list_a_space'
     else
-      MakersBnb_Listings.create_space(space_name: params[:Name], price: params[:Price], description: params[:Description])
+      MakersBnb_Listings.create_space(space_name: params[:Name], price: params[:Price], description: params[:Description], user_id: session[:user_id  ])
       @space_name = params[:Name]
       @price = params[:Price]
       @description = params[:Description]
@@ -85,6 +88,36 @@ class MakersBnb < Sinatra::Base
     erb :booking_confirm_booking
   end
 
+
+  get '/update_booking' do
+    erb :update_booking
+  end
+
+  get '/edit_listing/:spaces' do
+    erb :edit_listing
+  end
+
+  get '/change_listing_days/:spaces' do
+    session[:space_id] = params[:spaces] 
+      if Updater.confirm_user(space_id: session[:space_id], user_id: session[:user_id])
+        @dates = Bookings.print_dates
+        @checked_availability = Bookings.check_availability(@dates)
+        erb :change_listing_days
+      else
+        'YOU CANNOT ACCESS THIS PAGE'
+      end
+    end
+
+    get '/change_listing_days_unavailable/:date' do
+      Bookings.add_booking(params[:date])
+      redirect '/update_booking'
+    end
+
+    get '/change_listing_days_available/:date' do
+      Bookings.remove_booking(params[:date])
+      redirect '/update_booking'
+    end
+
   get '/check_request' do
     @booked_dates = Bookings.booked_dates
     @approved_array = Bookings.approved?(@booked_dates)
@@ -100,5 +133,6 @@ class MakersBnb < Sinatra::Base
     Bookings.disapprove_booking(params[:date])
     redirect '/check_request'
   end
+
 
 end

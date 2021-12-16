@@ -2,9 +2,9 @@ require './lib/database_connection'
 
 class MakersBnb_Listings
 
-  def self.create_space(space_name:, price:, description:)
-    DatabaseConnection.query("INSERT INTO spaces (name, price, description) VALUES($1, $2, $3) RETURNING name, price, description;", [space_name, price, description]
-    )
+  def self.create_space(space_name:, price:, description:, user_id:)
+    DatabaseConnection.query("INSERT INTO spaces (name, price, description, user_id) VALUES($1, $2, $3, $4) RETURNING name, price, description;", [space_name, price, description, user_id]
+      )
   end
 
   def self.exist?(space_name:)
