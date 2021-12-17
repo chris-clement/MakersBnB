@@ -1,4 +1,3 @@
-require 'pg'
 require './lib/database_connection'
 
 class Updater
@@ -7,7 +6,7 @@ class Updater
     result = DatabaseConnection.query("SELECT * FROM spaces WHERE user_id = $1;", [id])
 
     result.map do |spaces|
-      p spaces['name']
+      spaces['name']
     end
   end
 
@@ -20,11 +19,7 @@ class Updater
 
    def self.confirm_user(space_id:, user_id:)
     result = DatabaseConnection.query("SELECT * FROM spaces WHERE id = $1 AND user_id = $2;", [space_id, user_id])
-    if result.count == 0
-      false
-    else
-      true
-    end
+    result.count == 0 ? false : true
   end 
 
 end

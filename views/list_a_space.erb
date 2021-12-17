@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <head>
   <title>List a space</title>
   <link rel="stylesheet" type="text/css" href="<%= url("/listing_form_style.css")%>">
@@ -12,8 +13,8 @@
   </div>
 
   <nav> 
-   <a href="/home"> <p id='home'><i class="fas fa-home"></i> Home</p></a>
-    <div id="nav-links">
+    <a href="/home" id='home'><i class="fas fa-home"></i> Home</a>
+    <div id="nav-links-list">
       <a href="/check_request">Check Request</a> |
       <a href="/">Logout</a><i class="fas fa-user"></i>
     </div>
@@ -28,6 +29,7 @@
       <input required type="text" name="Name" placeholder='My Awesome Space'/>
       <input required type="number" min='0' name="Price" placeholder="Price per night" />
       <input required type="text" name="Description" placeholder="Description"/>
+      <input type="text" name="space_url" placeholder="Space Url"/>
       <input type="submit" value="Submit" />
     </form>
   </div>

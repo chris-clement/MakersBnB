@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <head>
   <link href="<%= url('/check_request.css') %>" rel="stylesheet" type="text/css" />
   <script src="https://kit.fontawesome.com/ea92a85679.js" crossorigin="anonymous"></script>
@@ -26,7 +27,7 @@
       <% if  approval_status == 'pending' %>
       <div id='pend-btn-container'>
       <%# add list of all spaces and images %>
-        <div id='pending'><div id='space-img'></div>London Road, <%= date %></div>
+        <div id='pending'><div id='space-img'></div>London Road, <%= date</div> %>
         <form action='/check_request/approve/<%= date %>' method='get'>
           <input type='submit' value='Approve' id='app-btn'>
         </form>

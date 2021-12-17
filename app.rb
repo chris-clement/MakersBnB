@@ -3,11 +3,12 @@
 require 'sinatra/base'
 require 'sinatra/flash'
 require 'sinatra/reloader'
+require './database_connection_setup'
 require './lib/bookings'
 require_relative './lib/makersbnb'
 require './lib/user'
-require './database_connection_setup'
 require_relative './lib/update'
+require './lib/images'
 
 
 # App class
@@ -65,7 +66,9 @@ class MakersBnb < Sinatra::Base
     if MakersBnb_Listings.exist?(space_name: params[:Name])
         redirect '/list_a_space'
     else
-      MakersBnb_Listings.create_space(space_name: params[:Name], price: params[:Price], description: params[:Description], user_id: session[:user_id  ])
+      MakersBnb_Listings.create_space(space_name: params[:Name], price: params[:Price], description: params[:Description], user_id: session[:user_id])
+      Images.save_url(params[:Name], params[:space_url])
+      @image_url = Images.url_by_space(params[:Name])
       @space_name = params[:Name]
       @price = params[:Price]
       @description = params[:Description]
@@ -131,7 +134,6 @@ class MakersBnb < Sinatra::Base
     end
     @approved_array = Bookings.approved?(@booked_dates)
 
-
     erb :check_request
   end
 
@@ -144,6 +146,4 @@ class MakersBnb < Sinatra::Base
     Bookings.disapprove_booking(params[:date])
     redirect '/check_request'
   end
-
-
 end
