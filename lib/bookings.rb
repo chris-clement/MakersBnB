@@ -37,7 +37,7 @@ class Bookings
   end
 
   def self.add_booking(date, space_id, user_id)
-    DatabaseConnection.query("INSERT INTO bookings(date, space_id, user_id) VALUES($1, $2, $3);", [date, space_id, user_id])
+    DatabaseConnection.query("INSERT INTO bookings(date, space_id) VALUES($1, $2);", [date, space_id])
   end
 
   def self.locate_booking_id(date,space_id,user_id)
