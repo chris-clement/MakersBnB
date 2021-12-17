@@ -180,4 +180,14 @@ class MakersBnb < Sinatra::Base
     erb :listing_updated_successfully
   end
 
+  get '/my_bookings' do
+    @my_bookings = Bookings.my_bookings(session[:user_id])
+    @mapped_bookings = @my_bookings.map do |booking|
+      if booking['approved'] == 't' then @approved = 'Approved' elsif booking['approved'] == 'f' then @approved = "Disapproved" else @approved = 'Pending' end
+      p booking['date'].to_s + " - " + Updater.space_name(booking['space_id'])[0].to_s + " - " + "Status:" + 
+       @approved
+    end
+    erb :my_bookings
+  end
+
 end

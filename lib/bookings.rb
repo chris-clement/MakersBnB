@@ -83,4 +83,8 @@ class Bookings
       return true
     end
   end
+
+  def self.my_bookings(user_id)
+    result = DatabaseConnection.query("SELECT date,space_id,approved FROM bookings WHERE user_id=$1 ;", [user_id]).to_a
+  end
 end
