@@ -29,7 +29,7 @@
   height: 3.5rem;
   margin-bottom: 1rem;
   border-radius: 5px;
-  width: 12rem;
+  width: 15rem;
   border: 1px solid black;
   padding-left: 0.6rem;
 }
@@ -37,15 +37,35 @@
   height: 3.5rem;
   margin-bottom: 1rem;
   border-radius: 5px;
-  width: 12rem;
+  width: 15rem;
   border: 1px solid black;
   padding-left: 0.6rem;
 }
 #login-btn {
   background-color: red;
   color:white;
-  width: 12rem;
+  width: 15rem;
   height: 2.8rem;
   border-radius: 5px;
   border: 1px solid black;
+}
+/* in sign up page */
+#back_to_login {
+  color: blue;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0.4rem;
+}
+#back_to_login:hover {
+  color:red;
+}
+/* in login page */
+#go_to_sign_up {
+  color: blue;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0.4rem;
+}
+#go_to_sign_up:hover {
+  color:red;
 }

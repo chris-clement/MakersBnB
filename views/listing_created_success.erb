@@ -1,35 +1,37 @@
+<!DOCTYPE html>
 <head>
   <title>Listing created</title>
   <link rel="stylesheet" type="text/css" href="<%= url("/listing_form_style.css")%>">
+  <script src="https://kit.fontawesome.com/ea92a85679.js" crossorigin="anonymous"></script>
 </head>
 
+<body>
   <div id='top-bar'>
     <div id='logo'>
     </div>
     <h1> MakersBnB </h1>
   </div>
-
-<body>
-
-    <nav>
-      <div class = "nav-list">
-      <div><a href="/home">Home</a></div>
-      <div><a href="/list_a_space">List a Space</a></div>
-      <div><%= @username %></div>
-      </div>
-    </nav>
-
-    <div class = "container">
-    
-      <h3>Listing created:</h3>
-
-      <div id='space-container'>
-          Name: <%= @space_name %>
-          <br>
-          Price: £<%= @price %>
-          <br>
-          Description: <%= @description %>
-          <br>
-       </div>
+  <nav>
+    <a href="/home" id='home'><i class="fas fa-home"></i> Home</a>
+    <div id="nav-links">
+      <a href="/add_booking">Book a Space</a>
+      <a href="/list_a_space">List a Space</a>
+      <a href="/">Logout</a><i class="fas fa-user"></i>
     </div>
+  </nav>
+  <%# main %>
+  <section class='container'>
+    <h3>Listing created:</h3>
+    <div id='space-container'>
+      <img src="<%=@image_url%>" alt='new-space-img'>
+      <div id='space-details'>
+      Name: <span><%= @space_name %></span>
+      <br>
+      Price: <span>£<%= @price %></span>
+      <br>
+      Description: <span><%= @description %></span>
+      </div>
+      <br>
+    </div>
+  </section>
 </body>
