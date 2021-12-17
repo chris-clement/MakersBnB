@@ -2,6 +2,7 @@ require 'database_connection'
 
 feature 'Add bookings' do
     scenario 'A user should be able to click on book now and see available dates' do
+        DatabaseConnection.query("INSERT INTO spaces (name, price, description, user_id) VALUES('Amazing Place', '14', 'cozy', '1');")
         login_and_visit_home
         click_on('Book Now')
         expect(page).to have_content("#{today_date}")
@@ -10,6 +11,7 @@ end
 
 feature 'After clicking book now, a user sees if a date is available' do
     scenario 'A user should be able to see if a date is available' do
+        DatabaseConnection.query("INSERT INTO spaces (name, price, description, user_id) VALUES('Amazing Place', '14', 'cozy', '1');")
         DatabaseConnection.query("INSERT INTO bookings(date, approved) VALUES ($1, $2);", ["#{today_date}", false])
         DatabaseConnection.query("INSERT INTO bookings(date, approved) VALUES ($1, $2);", ["#{(Time.now + 86400).strftime("%d-%m-%Y")}", true])
         login_and_visit_home
@@ -21,6 +23,7 @@ end
 
 feature 'Booking confirmed once you click to book an available date' do
     scenario 'A user should be able to book an available date' do
+        DatabaseConnection.query("INSERT INTO spaces (name, price, description, user_id) VALUES('Amazing Place', '14', 'cozy', '1');")
         DatabaseConnection.query("INSERT INTO bookings(date) VALUES ($1);", ["#{Time.now.strftime("%d-%m-%Y")}"])
         login_and_visit_home
         click_on('Book Now')
@@ -31,6 +34,7 @@ end
 
 feature 'Booking disables availability of that date' do
     scenario 'A user should be able to book an available date and then it becomes unavailable' do
+        DatabaseConnection.query("INSERT INTO spaces (name, price, description, user_id) VALUES('Amazing Place', '14', 'cozy', '1');")
         login_and_visit_home
         click_on('Book Now')
         first(:button, 'Book').click
@@ -42,6 +46,7 @@ end
 
 feature 'Confirmation page specifies date which has been booked' do
     scenario 'A user books an available date and gets confirmation for the date they have booked' do
+        DatabaseConnection.query("INSERT INTO spaces (name, price, description, user_id) VALUES('Amazing Place', '14', 'cozy', '1');")
         login_and_visit_home
         click_on('Book Now')
         first(:button, 'Book').click
