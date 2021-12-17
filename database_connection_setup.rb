@@ -4,10 +4,10 @@ require './lib/database_connection'
 
 if ENV['ENVIRONMENT'] == 'test'
   DatabaseConnection.setup('makers_bnb_test')
-  # DatabaseConnection.query("ALTER SEQUENCE users_id_seq RESTART WITH 1;")
-  # DatabaseConnection.query("ALTER SEQUENCE spaces_id_seq RESTART WITH 1;")
-  # DatabaseConnection.query("ALTER SEQUENCE bookings_id_seq RESTART WITH 1;")
-  # moved into spec_helper
+
+  DatabaseConnection.query("ALTER SEQUENCE users_id_seq RESTART WITH 1;")
+  DatabaseConnection.query("ALTER SEQUENCE spaces_id_seq RESTART WITH 1;")
+  DatabaseConnection.query("ALTER SEQUENCE bookings_id_seq RESTART WITH 1;")
 else
   DatabaseConnection.setup('makers_bnb')
 end

@@ -6,9 +6,10 @@ feature 'Viewing booking request' do
   end
 
   scenario 'user is able to see which space has been requested to book' do
-    Bookings.add_booking('18-12-2021')
     login_and_visit_home
+    create_listing('My Space')
+    Bookings.add_booking(today_date, 1, 1)
     click_on('Check Request')
-    expect(page).to have_content('London Road, 18-12-2021')
+    expect(page).to have_content("London Road, #{today_date}")
   end
 end

@@ -36,9 +36,11 @@ feature 'Booking disables availability of that date' do
     scenario 'A user should be able to book an available date and then it becomes unavailable' do
         DatabaseConnection.query("INSERT INTO spaces (name, price, description, user_id) VALUES('Amazing Place', '14', 'cozy', '1');")
         login_and_visit_home
+        create_listing('My Space')
+        click_on 'Home'
         click_on('Book Now')
         first(:button, 'Book').click
-        Bookings.approve_booking("#{today_date}")
+        Bookings.approve_booking("#{today_date}", 1, 1)
         click_on 'Back to dates'
         expect(page).to have_content "#{today_date} - Not Available"
     end
