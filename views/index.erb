@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <head> 
   <link href="<%= url('/index.css') %>" rel="stylesheet" type="text/css" />
 </head>
@@ -22,7 +23,7 @@
 
     <% @listings.each do |listing| %>
   <div id='space-container'>
-    <img src="<%=@space_url%>" alt='space'>
+    <img src="<%=Images.url_by_space(listing['name'])%>" alt='<%= listing['name']%>'>
       <div id='details-space'>
         <h4 d='name'><%= listing['name'] %></h4>
         <%# <span>Description:</span>  %>

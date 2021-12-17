@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <head> 
   <link href="<%= url('/home.css') %>" rel="stylesheet" type="text/css" />
@@ -26,13 +25,13 @@
     <% @listings.each do |listing| %>
 
   <div id='space-container'>
-    <img src="<%=@space_url%>" alt='space'>
+    <img src="<%=Images.url_by_space(listing['name'])%>" alt='<%= listing['name']%>'>
       
       <div id='details-space'>
         <h4 d='name'><%= listing['name'] %></h4>
         <%# <span>Description:</span>  %>
         <div id='description'>
-          <p><%= listing['description'] %></p>
+          <p id='desc'><%= listing['description'] %></p>
         </div>
         <div id='price'>
          £<%= listing['price'] %> /night

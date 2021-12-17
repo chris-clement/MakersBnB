@@ -3,11 +3,12 @@
 require 'sinatra/base'
 require 'sinatra/flash'
 require 'sinatra/reloader'
+require './database_connection_setup'
 require './lib/bookings'
 require_relative './lib/makersbnb'
 require './lib/user'
-require './database_connection_setup'
 require_relative './lib/update'
+require './lib/images'
 
 
 # App class
@@ -28,7 +29,7 @@ class MakersBnb < Sinatra::Base
     if User.valid(session[:username], session[:password])
       session[:user_id] = User.user_id(username: session[:username])
       @listings = MakersBnb_Listings.view_listings
-      @space_url = session[:space_url]
+      @username = session[:username]
       erb :home
     else
       flash[:notice] = 'Invalid username or password'
@@ -66,7 +67,8 @@ class MakersBnb < Sinatra::Base
         redirect '/list_a_space'
     else
       MakersBnb_Listings.create_space(space_name: params[:Name], price: params[:Price], description: params[:Description], user_id: session[:user_id])
-      session[:space_url] = params[:space_url]
+      Images.save_url(params[:Name], params[:space_url])
+      @image_url = Images.url_by_space(params[:Name])
       @space_name = params[:Name]
       @price = params[:Price]
       @description = params[:Description]
