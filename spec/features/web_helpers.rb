@@ -1,6 +1,6 @@
 def go_to_login_page
   visit('/')
-  click_on('login')
+  click_on('Login')
 end
 
 def login_and_visit_home

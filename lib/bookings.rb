@@ -1,4 +1,5 @@
 require './lib/database_connection'
+
 class Bookings
   def self.print_dates
     t = Time.now
