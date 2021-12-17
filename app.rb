@@ -129,12 +129,12 @@ class MakersBnb < Sinatra::Base
       Bookings.add_booking(params[:date], session[:space_id], session[:user_id])
       id = Bookings.locate_booking_id(params[:date], session[:space_id], session[:user_id])['id']
       Bookings.approve_booking(id)
-      redirect '/update_booking'
+      redirect "/change_listing_days/#{session[:space_id]}"
     end
 
     get '/change_listing_days_available/:date' do
       Bookings.remove_booking(params[:date], session[:space_id], session[:user_id])
-      redirect '/update_booking'
+      redirect "/change_listing_days/#{session[:space_id]}"
     end
 
   get '/check_request' do
