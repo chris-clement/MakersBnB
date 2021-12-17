@@ -96,7 +96,6 @@ class MakersBnb < Sinatra::Base
     erb :booking_confirm_booking
   end
 
-
   get '/update_booking' do
     erb :update_booking
   end

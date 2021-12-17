@@ -154,3 +154,17 @@ span {
   margin-bottom: 0.8rem;
   color: white;
 }
+#booking-requests {
+  max-width: 500px;
+  width: 100%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+}
+li {
+  list-style: none;
+  padding: 0.4rem;
+  font-weight: bold;
+  font-style: italic;
+  border-bottom: 1px solid red;
+}

@@ -19,12 +19,11 @@
     <div>
   </nav>
 
+ <div id='booking-requests'>
   <h2>My Bookings:</h2> 
-  
-  <div id='booking-requests'>
-  <% @mapped_bookings.each do |booking| %>
-    <li> <%= booking %>
-    </li>
-  <%end%> 
-  
+
+    <% @mapped_bookings.each do |booking| %>
+      <li><%= booking %></li>
+    <%end%> 
+  <div>
 </body>
