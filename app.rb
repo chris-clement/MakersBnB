@@ -121,10 +121,12 @@ class MakersBnb < Sinatra::Base
 
   get '/check_request' do
     @user_spaces = Updater.list(id: session[:user_id])
-    p "HELLO" 
-    p Updater.space_id(space: @user_spaces[0])
+    "HELLO" 
+    p Updater.space_id(space: @user_spaces[0])[0].to_i
+    @user_spaces_id = []
+    @booked_dates = []
     @user_spaces.each do |space_1|
-      @user_spaces_id << Updater.space_id(space: space_1)
+      @user_spaces_id << Updater.space_id(space: space_1).first.to_i
       Bookings.booked_dates(Updater.space_id(space: space_1)).each do |date| 
         @booked_dates << [space, date]
       end
