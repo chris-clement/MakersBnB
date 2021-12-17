@@ -24,4 +24,13 @@ class User
     DatabaseConnection.query("INSERT INTO users(username, password, email, phone_number) VALUES ($1, $2, $3, $4) RETURNING(username, password, email, phone_number);", [username, password, email, phone_number])
     result = DatabaseConnection.query("SELECT * FROM users;")
   end
+
+  def self.unique_username(username)
+    result = DatabaseConnection.query("SELECT username FROM users WHERE username = $1;", [username])
+    if result.count.zero?
+      true
+    else
+      false
+    end
+  end
 end
