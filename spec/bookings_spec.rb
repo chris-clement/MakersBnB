@@ -17,18 +17,19 @@ describe Bookings do
         expect(Bookings.check_availability([today_date], 1)).to eq ['Available']
       end
     end
+    context 'user has disapproved the booking' do
+      it 'returns Available' do
+        DatabaseConnection.query("INSERT INTO bookings(date, approved) VALUES ($1, $2);", [today_date, false])
+        expect(Bookings.check_availability([today_date], 1)).to eq ['Available']
+      end
+    end
+
     context 'user has approved the booking' do
       it 'returns not Available' do
         DatabaseConnection.query("INSERT INTO spaces(price, name, description) VALUES ($1, $2, $3);", [21, 'My Space', 'Great space'])
         DatabaseConnection.query("INSERT INTO bookings(date, approved) VALUES ($1, $2);", [today_date, true])
         expect(Bookings.check_availability([today_date], 1)).to eq ['Not Available']
 
-      end
-    end
-    context 'user has disapproved the booking' do
-      it 'returns Available' do
-        DatabaseConnection.query("INSERT INTO bookings(date, approved) VALUES ($1, $2);", [today_date, false])
-        expect(Bookings.check_availability([today_date], 1)).to eq ['Available']
       end
     end
   end
@@ -44,10 +45,10 @@ describe Bookings do
   describe '.booked_date' do
     it 'returns all dates that have been booked' do
       DatabaseConnection.query("INSERT INTO spaces(price, name, description) VALUES ($1, $2, $3);", [21, 'My Space', 'Great space'])
-      Bookings.add_booking('20-12-2021', 1, 1)
-      Bookings.add_booking('22-12-2021', 1, 1)
       Bookings.add_booking('25-12-2021', 1, 1)
-      expect(Bookings.booked_dates).to eq ['20-12-2021', '22-12-2021', '25-12-2021']
+      Bookings.add_booking('26-12-2021', 1, 1)
+
+      expect(Bookings.booked_dates(1)).to eq [["25-12-2021", "1"], ["26-12-2021", "2"]]
     end
   end
 
@@ -57,7 +58,7 @@ describe Bookings do
       DatabaseConnection.query("INSERT INTO spaces(price, name, description) VALUES ($1, $2, $3);", [21, 'My Space', 'Great space'])
       Bookings.add_booking(today_date, 1, 1)
       Bookings.approve_booking(today_date)
-      expect(Bookings.approved?([today_date])).to eq [true]
+      expect(Bookings.approved?([today_dat])).to eq [true]
     end
 
     context 'a date has been disapproved'
