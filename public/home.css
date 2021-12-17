@@ -41,7 +41,7 @@ nav {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  width: 30rem;
+  width: 38rem;
 }
 .fa-user {
   margin-left: 0.5rem;

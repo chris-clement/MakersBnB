@@ -13,6 +13,7 @@
   color: red;
   font-size: 2rem;
 }
+/* navbar */
 a {
   text-decoration: none;
   color: red;
@@ -33,10 +34,23 @@ nav {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  width: 18rem;
+  width: 16rem;
 }
 .fa-home {
   font-size: 1.2rem;
+}
+/* change listing navbar, update booking navbar */
+#nav-links-a {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 20rem;
+}
+/* main */
+#list-container {
+  max-width: 510px;
+  width: 100%;
+  margin: auto;
 }
 #booking-requests {
   display: flex;
@@ -62,6 +76,7 @@ nav {
 }
 span {
   font-weight: bold;
+  margin-left: 0.5rem;
 }
 #space-img {
   background-image: url('https://www.et-law.co.uk/wp-content/uploads/2018/03/should-i-buy-a-house-or-a-flat-e1553171515201.jpg');
@@ -81,4 +96,75 @@ span {
 }
 #dis-btn {
   background-color: rgba(255, 230, 255, 0.5);
+}
+/* -- check request ends here -- */
+
+/* main of change listing */
+#change-av-title {
+  display: flex;
+  justify-content: center;
+}
+#date-btn {
+  display: flex;
+  border-bottom: 1px solid black;
+  padding: 1rem 0 1rem 0.5rem;
+  align-items: center;
+  margin: auto;
+}
+#date {
+  margin-right: 0.5rem;
+}
+#buttons {
+  display: flex;
+  margin-left: auto;
+  margin-right: 3rem;
+}
+#unavailable, #available {
+  margin-left: 2rem;
+  width: 8rem;
+  height: 1.8rem;
+  border-radius: 8px;
+  padding: 0.2rem;
+  background-color: rgba(255, 230, 255, 0.5);
+}
+#available {
+  background-color: rgba(230, 255, 255, 0.5);
+}
+/* main of update booking */
+#update-request-container {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  width: 500px;
+  margin: auto;
+}
+#my-spaces {
+  display: flex;
+  justify-content: center;
+}
+/* buttons */
+#edit-listing, #edit-availability {
+  width: 8rem;
+  height: 1.8rem;
+  border-radius: 8px;
+  background-color: red;
+  margin-bottom: 0.8rem;
+  color: white;
+}
+#booking-requests {
+  max-width: 500px;
+  width: 100%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+}
+li {
+  list-style: none;
+  padding: 0.4rem;
+  font-weight: bold;
+  font-style: italic;
+  border-bottom: 1px solid red;
 }

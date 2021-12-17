@@ -27,7 +27,8 @@
       <% if  approval_status == 'pending' %>
       <div id='pend-btn-container'>
       <%# add list of all spaces and images %>
-        <div id='pending'><div id='space-img'></div> Request <%= date[2] %> <%= date[0] %> <%= date[1] %></div>
+        <div id='pending'><div id='space-img'></div> Request <%= date[2] %>, <%= date[0] %> <%= date[1] %></div>
+
         <form action='/check_request/approve/<%= date[2] %>' method='get'>
           <input type='submit' value='Approve' id='app-btn'>
         </form>
@@ -37,11 +38,11 @@
       </div>
     
       <% elsif (approval_status == true) && (Bookings.blocked_off?(date[2],session[:user_id]) == true)%>
-        <div id='approved'><div id='space-img'></div> Request <%= date[2] %> <%= date[0] %> <%= date[1] %>  - <span>Blocked Off</span> </div>
+        <div id='approved'><div id='space-img'></div> <%= date[0] %> <%= date[1] %>  - <span>Blocked Off</span> </div>
         <% elsif (approval_status == true)%>
-        <div id='approved'><div id='space-img'></div> Request <%= date[2] %> <%= date[0] %> <%= date[1] %>  - <span>Approved</span> </div>
+        <div id='approved'><div id='space-img'></div> <%= date[0] %> <%= date[1] %>  - <span>Approved</span> </div>
         <% else %>
-        <div id='disapproved'><div id='space-img'></div> Request <%= date[2] %> <%= date[0] %> <%= date[1] %> - <span>Disapproved</span> </div>
+        <div id='disapproved'><div id='space-img'></div> <%= date[0] %> <%= date[1] %> - <span>Disapproved</span> </div>
       <% end %>
     <% end %>
   </div>
