@@ -52,10 +52,6 @@ so customer's can pick a date,
 I would like to be able to list when my space is available. 
 
 As a user,   
-so customer's can pick a date,   
-I would like to be able to list when my space is available. 
-
-As a user,   
 so I have choice in who stays in my space,   
 I'd like the time to remain open until I approve a booking. 
 
