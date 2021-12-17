@@ -18,15 +18,19 @@ class MakersBnb_Listings
   end
 
   def self.view_listings
-    if ENV['ENVIRONMENT'] == 'test'
-      connection = PG.connect(dbname: 'makers_bnb_test')
-    else
-      connection = PG.connect(dbname: 'makers_bnb')
-    end
-    result = connection.exec("SELECT * FROM spaces;")
+    result = DatabaseConnection.query("SELECT * FROM spaces;")
     result.to_a
     
     #, RETURNING name, price, description;", [name, price, description])
     #result.map { |listing| listing['name']}
+  end
+
+  def self.view_space_details(id)
+    result = DatabaseConnection.query("SELECT * FROM spaces WHERE id = $1;",[id])
+    result.to_a
+  end
+
+  def self.update_listing(id:, space_name:, price:, description:)
+    result = DatabaseConnection.query("UPDATE spaces SET description = $4, price = $3, name = $2  WHERE id = $1 ", [id,space_name,price,description])
   end
 end

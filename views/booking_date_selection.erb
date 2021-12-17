@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <head>
   <link href="<%= url('/booking_date_selection.css') %>" rel="stylesheet" type="text/css" />
   <script src="https://kit.fontawesome.com/ea92a85679.js" crossorigin="anonymous"></script>
@@ -17,7 +18,7 @@
     <div>
   </nav>
 
-  <h1> You've chosen: London Road</h1>
+  <h1> You've chosen: <%= Updater.space_name(session[:space_id])[0].to_s%></h1>
   <h2> Choose your date below </h2>
   <ul>
     <p></p>

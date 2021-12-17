@@ -1,13 +1,40 @@
+<head>
+  <title>List a space</title>
+  <link rel="stylesheet" type="text/css" href="<%= url("/listing_form_style.css")%>">
+  <script src="https://kit.fontawesome.com/ea92a85679.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <div id='top-bar'>
+    <div id='logo'>
+    </div>
+    <h1> MakersBnB </h1>
+  </div>
+
+  <nav> 
+   <a href="/home"> <p id='home'><i class="fas fa-home"></i> Home</p></a>
+    <div id="nav-links">
+      <a href="/check_request">Check Request</a> |
+      <a href="/update_booking">Update Space</a> |
+      <a href="/">Logout</a><i class="fas fa-user"></i>
+    </div>
+  </nav>
+
+  <div class = "container">
+
 <h2> Change availability below </h2>
 <ul>
 <% @dates.zip(@checked_availability).each do |date, available| %>
- <li> <%= date %> <%= available %> 
- <form action = '/change_listing_days_unavailable/<%= date %>' method='get'> 
- <input type='submit' value='Set Unavailable'>
- </form>
- <form action = '/change_listing_days_available/<%= date %>' method='get'> 
- <input type='submit' value='Available'>
- </form>
- </li>
-<%end%> 
-</ul>
+  <li> <%= date %> <%= available %> 
+    <form action = '/change_listing_days_unavailable/<%= date %>' method='get'> 
+        <input type='submit' value='Set Unavailable'>
+     </form>
+     <form action = '/change_listing_days_available/<%= date %>' method='get'> 
+         <input type='submit' value='Available'>
+     </form>
+  </li>
+  <%end%> 
+  </ul>
+
+  </div>
+</body>

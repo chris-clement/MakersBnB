@@ -3,11 +3,12 @@
 require 'sinatra/base'
 require 'sinatra/flash'
 require 'sinatra/reloader'
+require './database_connection_setup'
 require './lib/bookings'
 require_relative './lib/makersbnb'
 require './lib/user'
-require './database_connection_setup'
 require_relative './lib/update'
+require './lib/images'
 
 
 # App class
@@ -42,9 +43,14 @@ class MakersBnb < Sinatra::Base
   end
 
   post '/sign_up_details' do
-    flash[:notice] = 'Thanks for signing up to MakersBnB'
-    User.create_user(params[:username], params[:password], params[:email], params[:phone_number])
-    redirect '/login'
+    if User.unique_username(params[:username]) == true
+      flash[:notice] = 'Thanks for signing up to MakersBnB'
+      User.create_user(params[:username], params[:password], params[:email], params[:phone_number])
+      redirect '/login'
+    else
+      flash[:notice] = 'This username has been taken - please choose a different one!'
+      redirect '/sign_up'
+    end
   end
 
   get '/login' do
@@ -65,7 +71,9 @@ class MakersBnb < Sinatra::Base
     if MakersBnb_Listings.exist?(space_name: params[:Name])
         redirect '/list_a_space'
     else
-      MakersBnb_Listings.create_space(space_name: params[:Name], price: params[:Price], description: params[:Description], user_id: session[:user_id  ])
+      MakersBnb_Listings.create_space(space_name: params[:Name], price: params[:Price], description: params[:Description], user_id: session[:user_id])
+      Images.save_url(params[:Name], params[:space_url])
+      @image_url = Images.url_by_space(params[:Name])
       @space_name = params[:Name]
       @price = params[:Price]
       @description = params[:Description]
@@ -94,7 +102,19 @@ class MakersBnb < Sinatra::Base
   end
 
   get '/edit_listing/:spaces' do
-    erb :edit_listing
+    session[:space_id] = params[:spaces] 
+    if Updater.confirm_user(space_id: session[:space_id], user_id: session[:user_id])
+      @dates = Bookings.print_dates
+      @checked_availability = Bookings.check_availability(@dates, session[:space_id])
+      space_details = MakersBnb_Listings.view_space_details(session[:space_id])[0]
+      p space_details
+      @space_name = space_details['name']
+      @price = space_details['price']
+      @description = space_details['description']
+      erb :edit_listing 
+    else
+      'YOU CANNOT ACCESS THIS PAGE'
+    end
   end
 
   get '/change_listing_days/:spaces' do
@@ -110,7 +130,8 @@ class MakersBnb < Sinatra::Base
 
     get '/change_listing_days_unavailable/:date' do
       Bookings.add_booking(params[:date], session[:space_id], session[:user_id])
-      Bookings.approve_booking(params[:date], session[:space_id], session[:user_id])
+      id = Bookings.locate_booking_id(params[:date], session[:space_id], session[:user_id])['id']
+      Bookings.approve_booking(id)
       redirect '/update_booking'
     end
 
@@ -121,31 +142,42 @@ class MakersBnb < Sinatra::Base
 
   get '/check_request' do
     @user_spaces = Updater.list(id: session[:user_id])
-    "HELLO" 
-    p Updater.space_id(space: @user_spaces[0])[0].to_i
     @user_spaces_id = []
     @booked_dates = []
     @user_spaces.each do |space_1|
-      @user_spaces_id << Updater.space_id(space: space_1).first.to_i
-      Bookings.booked_dates(Updater.space_id(space: space_1)).each do |date| 
-        @booked_dates << [space, date]
+      @user_spaces_id << Updater.space_id(space: space_1)[0].to_i
+      Bookings.booked_dates(Updater.space_id(space: space_1)[0].to_i).each do |date, id|
+        array = [space_1,date, id] 
+        @booked_dates << array
       end
     end
-    @approved_array = Bookings.approved?(@booked_dates)
-
+    if @booked_dates.nil?
+      @booked_dates = ["No-one"]
+      @approved_array = ["You have no approvals to do!"]
+    else
+      @approved_array = Bookings.approved?(@booked_dates)
+    end
 
     erb :check_request
   end
 
-  get '/check_request/approve/:date' do
-    Bookings.approve_booking(params[:date])
+  get '/check_request/approve/:id' do
+    Bookings.approve_booking(params[:id])
     redirect '/check_request'
   end
 
-  get '/check_request/disapprove/:date' do
-    Bookings.disapprove_booking(params[:date])
+  get '/check_request/disapprove/:id' do
+    Bookings.disapprove_booking(params[:id])
     redirect '/check_request'
   end
 
+
+  post '/listing_updated/:id' do
+    MakersBnb_Listings.update_listing(id: params[:id], space_name: params[:Name], price: params[:Price], description: params[:Description])
+    @space_name = params[:Name]
+    @price = params[:Price]
+    @description = params[:Description]
+    erb :listing_updated_successfully
+  end
 
 end
