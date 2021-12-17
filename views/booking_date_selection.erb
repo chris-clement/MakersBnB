@@ -23,7 +23,7 @@
   <ul>
     <p></p>
   <% @dates.zip(@checked_availability).each do |date, available| %>
-    <li> <span><%= date %></span> - <%= available %> <% if available != "Not Available" %>
+    <li> <span><%= date %></span> - <%= available %> <% if available == "Available" %>
     <form action = '/booking/confirm_booking/<%= session[:space_id] %>/<%= date %>' method='get'> 
       <input type='submit' value='Book' id='book-btn'>
     </form>

@@ -85,7 +85,7 @@ class MakersBnb < Sinatra::Base
   get '/booking/date_selection/:id' do
     session[:space_id] = params[:id]
     @dates = Bookings.print_dates
-    @checked_availability = Bookings.check_availability(@dates, session[:space_id])
+    @checked_availability = Bookings.is_the_booking_pending?(@dates, session[:space_id], session[:user_id])
     erb :booking_date_selection
   end
 
@@ -178,6 +178,16 @@ class MakersBnb < Sinatra::Base
     @price = params[:Price]
     @description = params[:Description]
     erb :listing_updated_successfully
+  end
+
+  get '/my_bookings' do
+    @my_bookings = Bookings.my_bookings(session[:user_id])
+    @mapped_bookings = @my_bookings.map do |booking|
+      if booking['approved'] == 't' then @approved = 'Approved' elsif booking['approved'] == 'f' then @approved = "Disapproved" else @approved = 'Pending' end
+      p booking['date'].to_s + " - " + Updater.space_name(booking['space_id'])[0].to_s + " - " + "Status:" + 
+       @approved
+    end
+    erb :my_bookings
   end
 
 end
