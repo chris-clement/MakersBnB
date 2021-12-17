@@ -85,7 +85,7 @@ class MakersBnb < Sinatra::Base
   get '/booking/date_selection/:id' do
     session[:space_id] = params[:id]
     @dates = Bookings.print_dates
-    @checked_availability = Bookings.check_availability(@dates, session[:space_id])
+    @checked_availability = Bookings.is_the_booking_pending?(@dates, session[:space_id], session[:user_id])
     erb :booking_date_selection
   end
 

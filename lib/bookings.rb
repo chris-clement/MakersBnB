@@ -14,6 +14,28 @@ class Bookings
     end
   end
 
+  def self.is_the_booking_pending?(dates = [], space_id, user_id)
+    dates.map do |date|
+      result_approved = DatabaseConnection.query("SELECT space_id, date FROM bookings WHERE date = $1 AND approved = $2 AND space_id = $3 ;", [date, true, space_id])
+      result_approved_for_you = DatabaseConnection.query("SELECT space_id, date FROM bookings WHERE date = $1 AND approved = $2 AND space_id = $3 AND user_id = $4 ;", [date, true, space_id, user_id])
+      result_pending = DatabaseConnection.query("SELECT space_id, date FROM bookings WHERE date = $1 AND approved IS NULL AND space_id = $2 AND user_id = $3;", [date, space_id,user_id])
+      result_disapproved = DatabaseConnection.query("SELECT space_id, date FROM bookings WHERE date = $1 AND approved = $2 AND space_id = $3 AND user_id = $4;", [date, false, space_id,user_id])
+      if !result_approved.count.zero? 
+        if result_approved_for_you.count.zero?
+          "Not Available"
+        else
+          "Approved"
+        end
+      elsif !result_pending.count.zero?
+        "Pending"
+      elsif !result_disapproved.count.zero?
+        "Disapproved"
+      else
+        "Available"
+      end
+    end
+  end
+
   def self.add_booking(date, space_id, user_id)
     DatabaseConnection.query("INSERT INTO bookings(date, space_id, user_id) VALUES($1, $2, $3);", [date, space_id, user_id])
   end
