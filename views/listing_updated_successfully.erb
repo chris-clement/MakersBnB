@@ -1,5 +1,5 @@
 <head>
-  <title>Listing created</title>
+  <title>Listing Updated </title>
   <link rel="stylesheet" type="text/css" href="<%= url("/listing_form_style.css")%>">
 </head>
 
@@ -14,6 +14,7 @@
     <nav>
       <div class = "nav-list">
       <div><a href="/home">Home</a></div>
+      <div><a href="/add_booking">Book a Space</a></div>
       <div><a href="/list_a_space">List a Space</a></div>
       <div><%= @username %></div>
       </div>
@@ -21,7 +22,7 @@
 
     <div class = "container">
     
-      <h3>Listing created:</h3>
+      <h3>Listing Updated:</h3>
 
       <div id='space-container'>
           Name: <%= @space_name %>

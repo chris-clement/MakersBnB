@@ -42,9 +42,14 @@ class MakersBnb < Sinatra::Base
   end
 
   post '/sign_up_details' do
-    flash[:notice] = 'Thanks for signing up to MakersBnB'
-    User.create_user(params[:username], params[:password], params[:email], params[:phone_number])
-    redirect '/login'
+    if User.unique_username(params[:username]) == true
+      flash[:notice] = 'Thanks for signing up to MakersBnB'
+      User.create_user(params[:username], params[:password], params[:email], params[:phone_number])
+      redirect '/login'
+    else
+      flash[:notice] = 'This username has been taken - please choose a different one!'
+      redirect '/sign_up'
+    end
   end
 
   get '/login' do
@@ -94,7 +99,19 @@ class MakersBnb < Sinatra::Base
   end
 
   get '/edit_listing/:spaces' do
-    erb :edit_listing
+    session[:space_id] = params[:spaces] 
+    if Updater.confirm_user(space_id: session[:space_id], user_id: session[:user_id])
+      @dates = Bookings.print_dates
+      @checked_availability = Bookings.check_availability(@dates, session[:space_id])
+      space_details = MakersBnb_Listings.view_space_details(session[:space_id])[0]
+      p space_details
+      @space_name = space_details['name']
+      @price = space_details['price']
+      @description = space_details['description']
+      erb :edit_listing 
+    else
+      'YOU CANNOT ACCESS THIS PAGE'
+    end
   end
 
   get '/change_listing_days/:spaces' do
@@ -110,7 +127,8 @@ class MakersBnb < Sinatra::Base
 
     get '/change_listing_days_unavailable/:date' do
       Bookings.add_booking(params[:date], session[:space_id], session[:user_id])
-      Bookings.approve_booking(params[:date], session[:space_id], session[:user_id])
+      id = Bookings.locate_booking_id(params[:date], session[:space_id], session[:user_id])['id']
+      Bookings.approve_booking(id)
       redirect '/update_booking'
     end
 
@@ -151,5 +169,12 @@ class MakersBnb < Sinatra::Base
     redirect '/check_request'
   end
 
+  post '/listing_updated/:id' do
+    MakersBnb_Listings.update_listing(id: params[:id], space_name: params[:Name], price: params[:Price], description: params[:Description])
+    @space_name = params[:Name]
+    @price = params[:Price]
+    @description = params[:Description]
+    erb :listing_updated_successfully
+  end
 
 end

@@ -17,6 +17,11 @@ class Bookings
     DatabaseConnection.query("INSERT INTO bookings(date, space_id, user_id) VALUES($1, $2, $3);", [date, space_id, user_id])
   end
 
+  def self.locate_booking_id(date,space_id,user_id)
+    (DatabaseConnection.query("SELECT id FROM bookings WHERE date = $1 AND space_id = $2 AND user_id = $3;", [date, space_id, user_id])).to_a[-1]
+
+  end
+
   def self.remove_booking(date, space_id, user_id)
     DatabaseConnection.query("DELETE FROM bookings WHERE date = $1 AND space_id = $2 AND user_id = $3;", [date, space_id, user_id])
   end

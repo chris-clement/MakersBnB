@@ -27,4 +27,11 @@ class Updater
     end
   end 
 
+  def self.space_name(id)
+    result = DatabaseConnection.query("SELECT * FROM spaces WHERE id = $1;", [id])
+    result.map do |spaces|
+      p spaces['name']
+    end
+  end
+
 end
